@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>InfoDesign Assigment 3</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="d3.v7.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
 <h1>
     Hello :)
 </h1>
-<img src="hellowww.gif" alt="waving cat" title="It is I, the polite waving cat."/>
+<img id="gadse" src="hellowww.gif" alt="waving cat" title="It is I, the polite waving cat."/>
 </body>
+<script>
+    document
+        .getElementById("gadse")
+        .addEventListener("click", function () {
+            meow();
+        });
+</script>
 </html>

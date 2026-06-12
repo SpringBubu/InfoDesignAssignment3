@@ -14,7 +14,6 @@
 3. Scatterplot: Toggle to change unit (not sure what kind of technique that is exactly, querying?)
 4. Network Graph: Brushing, Zooming, Manipulation of nodes 
 
-
 ### At least 6 narrative views or story components
 1. Introduction: The Epistemological Hook
 2. The Macro Balance: Production vs. Consumption (Diverging Bar Chart)
@@ -26,3 +25,14 @@
 ## Notes
 No restrictions on programming tools or libraries, but encouraged to use D3.js. 
 The only exception is the use of dashboarding or non-programming software like Tableau or Power BI.
+
+## Data Sets
+- Dataset A: Austrian Macro-Consumption: 
+  - URL: https://www.statistik.at/statistiken/land-und-forstwirtschaft/landwirtschaftliche-bilanzen/versorgungsbilanzen
+  - FILE: Could not find any CSV or JSON file, might need manual work
+- Dataset B: Environmental Life Cycle Assessments
+  - URL: https://ourworldindata.org/environmental-impacts-of-food
+  - FILE: food-footprints.csv
+- Dataset C: High-Resolution Nutritional Biochemistry Profiles
+  - URL: https://fdc.nal.usda.gov/download-datasets.html
+  - FILE: FoodData_Central_foundation_food_json_2026-04-30.json (also other, larger data available on that site)
