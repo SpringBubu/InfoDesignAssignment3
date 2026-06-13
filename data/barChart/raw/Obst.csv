@@ -1,0 +1,33 @@
+STATcube
+
+"Supply balance sheet for cereals as of 1994/95 in tonnes (Q)"
+"Values by Year and Balance sheet item"
+"Counting: PRODUCTION, Imports, Exports, DOMESTIC USE, Processing, Losses, HUMAN CONSUMPTION, Human consumption per capita (in kg), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Year","2024/25",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Balance sheet item","Apples","Apples - Annotations","Pears","Pears - Annotations","Apricots","Apricots - Annotations","Cherries, sour cherries","Cherries, sour cherries - Annotations","Peaches, nectarines","Peaches, nectarines - Annotations","Plums","Plums - Annotations","Strawberries","Strawberries - Annotations","Other berries","Other berries - Annotations","Table grapes","Table grapes - Annotations","Bananas","Bananas - Annotations","Pineapples","Pineapples - Annotations","Other fruits","Other fruits - Annotations","Oranges","Oranges - Annotations","Tangerines, clementines","Tangerines, clementines - Annotations","Lemons","Lemons - Annotations","Grapefruits","Grapefruits - Annotations","Other citrus fruits","Other citrus fruits - Annotations","Fruits in total","Fruits in total - Annotations","Dried fruits","Dried fruits - Annotations","Nuts","Nuts - Annotations",
+"Values",
+"PRODUCTION",232906,,76146,,8842,,15284,,3343,,27082,,14335,,12579,,-,,-,,-,,-,,-,,-,,-,,-,,-,,390517,,-,,6377,,
+"Imports",123940,,27397,,17882,,25477,,33416,,16462,,43031,,45487,,42602,,147865,,26159,,99509,,58558,,40215,,41109,,5284,,31317,,825709,,22686,,56112,,
+"Exports",39396,,1096,,4388,,21562,,4002,,6546,,16962,,10281,,6744,,5292,,3929,,54221,,3425,,2230,,2764,,401,,4243,,187483,,5809,,19754,,
+"DOMESTIC USE",317450,,102446,,22336,,19198,,32756,,36998,,40404,,47785,,35858,,142573,,22230,,45288,,55133,,37985,,38345,,4883,,27074,,1028743,,16877,,42734,,
+"Processing",155000,,58000,,2000,,8700,,1500,,18000,,500,,9100,,-,,-,,-,,-,,-,,-,,-,,-,,-,,252800,,-,,-,,
+"Losses",21821,,15063,,828,,1983,,997,,3100,,5110,,1962,,2128,,7393,,972,,5253,,1757,,1977,,1233,,159,,1530,,73267,,-,,1594,,
+"HUMAN CONSUMPTION",140629,,29384,,19508,,8515,,30259,,15897,,34794,,36723,,33730,,135180,,21258,,40035,,53376,,36008,,37112,,4725,,25544,,702676,,16877,,41140,,
+"Human consumption per capita (in kg)",15.3,,3.2,,2.1,,0.9,,3.3,,1.7,,3.8,,4.0,,3.7,,14.7,,2.3,,4.4,,5.8,,3.9,,4.0,,0.5,,2.8,,76.4,,1.8,,4.5,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",73,,74,,40,,80,,10,,73,,35,,26,,-,,-,,-,,-,,-,,-,,-,,-,,-,,38,,-,,15,,
+
+
+Symbol,Description
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for cereals as of 1994/95 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Provisional data until 30 November following the end of the reporting period; Time series adjustment until 30 April of the year following the reporting period and in July of the year following the reporting period, when final trade data are available. Last update: [2026-04-30] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"DOMESTIC USE","including imported jam and preserved fruits"
+"Processing","for producing juice, must and spirits."
+"Human consumption per capita (in kg)","Human consumption pportioned to the average resident population of the respective reference period."
+"DEGREE OF SELF-SUFFICIENCY (in %)","Share of production in domestic use."
+"Year","All data relate to the crop year (1 July to 30 June of the following year)."
+"Balance sheet item","If not mentioned separately, indicated figures are in tonnes."
+"Nuts","Weight in shell."
+
+
+(c) Copyright Statistics Austria

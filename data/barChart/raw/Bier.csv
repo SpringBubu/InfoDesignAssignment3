@@ -1,0 +1,29 @@
+STATcube
+
+"Supply balance sheet for cereals as of 1994/95 in tonnes (Q)"
+"Values by Balance sheet item and Year"
+"Counting: PRODUCTION, Imports, Exports, HUMAN ONSUMPTION, Human consumption per capita (in l), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Balance sheet item","Beer",,,,,,,,,,"Non-alcoholic beer",,,,,,,,,,
+"Year","2020/21","2020/21 - Annotations","2021/22","2021/22 - Annotations","2022/23","2022/23 - Annotations","2023/24","2023/24 - Annotations","2024/25","2024/25 - Annotations","2020/21","2020/21 - Annotations","2021/22","2021/22 - Annotations","2022/23","2022/23 - Annotations","2023/24","2023/24 - Annotations","2024/25","2024/25 - Annotations",
+"Values",
+"PRODUCTION",9603336,,10259852,,10020287,,10064829,,9535410,,449984,,502968,,544075,,568273,,551345,,
+"Imports",716853,,783146,,901136,,934747,,952571,,37839,,32376,,33617,,48177,,54932,,
+"Exports",1361880,,1517772,,1394496,,1598869,,1514687,,170250,,175670,,207989,,244104,,214702,,
+"HUMAN ONSUMPTION",8958310,,9525226,,9526927,,9400707,,8973295,,317573,,359674,,369704,,372346,,391575,,
+"Human consumption per capita (in l)",100.3,,105.9,,104.7,,102.7,,97.6,,3.6,,4.0,,4.1,,4.1,,4.3,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",107,,108,,105,,107,,106,,142,,140,,147,,153,,141,,
+
+
+Symbol,Description
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for cereals as of 1994/95 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Provisional data until 30 November following the end of the reporting period; Time series adjustment until 30 April of the year following the reporting period and in July of the year following the reporting period, when final trade data are available. Last update: [2026-04-30] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"PRODUCTION","Data as of 2012/13 according to the Austrian Brewers Association."
+"Human consumption per capita (in l)","Human consumption pportioned to the average resident population of the respective reference period."
+"DEGREE OF SELF-SUFFICIENCY (in %)","Share of production in domestic use."
+"Balance sheet item","If not mentioned separately, indicated figures are in hectolitres."
+"Beer","Beer including non-alcoholic beer, radler and beer mix drinks"
+"Year","All data relate to the crop year (1 July to 30 June of the following year)."
+
+
+(c) Copyright Statistics Austria

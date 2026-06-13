@@ -1,0 +1,32 @@
+STATcube
+
+"Supply balance sheet for cereals as of 1994/95 in tonnes (Q)"
+"Values by Balance sheet item and Year"
+"Counting: PRODUCTION, Change of stocks, Imports, Exports, DOMESTIC USE, Industrial uses, processing, Losses, HUMAN CONSUMPTION, Human consumption per capita (in l), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Balance sheet item","Wine",,,,,,,,,,
+"Year","2020/21","2020/21 - Annotations","2021/22","2021/22 - Annotations","2022/23","2022/23 - Annotations","2023/24","2023/24 - Annotations","2024/25","2024/25 - Annotations",
+"Values",
+"PRODUCTION",2398411,,2460277,,2527441,,2330715,,1870639,,
+"Change of stocks",-23900,,22099,,122803,,-4702,,-394067,,
+"Imports",712267,,721904,,808528,,835010,,803183,,
+"Exports",745071,,704038,,701442,,705846,,643545,,
+"DOMESTIC USE",2389506,,2456044,,2511724,,2464581,,2424343,,
+"Industrial uses, processing",67554,,56771,,53750,,63094,,56539,,
+"Losses",23984,,24603,,25274,,23307,,18706,,
+"HUMAN CONSUMPTION",2297968,,2374670,,2432699,,2378180,,2349099,,
+"Human consumption per capita (in l)",25.7,,26.4,,26.7,,26.0,,25.5,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",100,,100,,101,,95,,77,,
+
+
+Symbol,Description
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for cereals as of 1994/95 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Provisional data until 30 November following the end of the reporting period; Time series adjustment until 30 April of the year following the reporting period and in July of the year following the reporting period, when final trade data are available. Last update: [2026-04-30] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"Industrial uses, processing","Used for producing brandies, vinegar and vermouth, must forproducing juice."
+"Human consumption per capita (in l)","Human consumption pportioned to the average resident population of the respective reference period."
+"DEGREE OF SELF-SUFFICIENCY (in %)","Share of production in domestic use."
+"Balance sheet item","If not mentioned separately, indicated figures are in hectolitres."
+"Year","The supply balance sheets for the crop sector relate to the crop year: * until 1993/1994: period from 1 November to 31 October of the following calendar year; * from 1994/1995 until 1999/2000: period from 1 September to 31 August of the following calendar year; * as of 2000/2001: period from 1 August to 31 July of the following calendar year;"
+
+
+(c) Copyright Statistics Austria

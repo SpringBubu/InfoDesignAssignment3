@@ -1,0 +1,28 @@
+STATcube
+
+"Supply balance sheet for cereals as of 1994/95 in tonnes (Q)"
+"Values by Balance sheet item and Year"
+"Counting: PRODUCTION, Change in stock, Imports, Exports, HUMANN CONSUMPTION, Human consumption per capita (in kg), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Balance sheet item","Honey",,,,,,,,,,
+"Year","2020/21","2020/21 - Annotations","2021/22","2021/22 - Annotations","2022/23","2022/23 - Annotations","2023/24","2023/24 - Annotations","2024/25","2024/25 - Annotations",
+"Values",
+"PRODUCTION",4100,,4300,,4300,,5500,,6000,,
+"Change in stock",-,,-,,-,,-,,-,,
+"Imports",6816,,7144,,5948,,7576,,5923,,
+"Exports",1561,,1632,,1429,,1629,,1615,,
+"HUMANN CONSUMPTION",9355,,9811,,8819,,11447,,10308,,
+"Human consumption per capita (in kg)",1.0,,1.1,,1.0,,1.3,,1.1,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",44,,44,,49,,48,,58,,
+
+
+Symbol,Description
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for cereals as of 1994/95 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Provisional data until 30 November following the end of the reporting period; Time series adjustment until 30 April of the year following the reporting period and in July of the year following the reporting period, when final trade data are available. Last update: [2026-04-30] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"Human consumption per capita (in kg)","Human consumption pportioned to the average resident population of the respective reference period."
+"DEGREE OF SELF-SUFFICIENCY (in %)","Share of production in domestic use."
+"Balance sheet item","If not mentioned separately, indicated figures are in tonnes."
+"Year","All data relate to the crop year (1 July to 30 June of the following year)."
+
+
+(c) Copyright Statistics Austria

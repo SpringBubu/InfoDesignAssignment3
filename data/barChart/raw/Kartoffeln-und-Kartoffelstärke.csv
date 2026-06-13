@@ -1,0 +1,44 @@
+STATcube
+
+"Supply balance sheet for oil seeds as of 1994/95 in tonnes (G Q)"
+"Values by Balance sheet item and Year"
+"Counting: PRODUCTION, Initial stocks, Final stocks, Imports, Exports, DOMESTIC USE, Animal feed, Seeds, Processing, Industrial uses, Losses, HUMAN CONSUMPTION, Human consumption per capita (in kg), HUMAN CONSUMPTION (in potatoe equivalent), Human consumption per capita (in kg), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Balance sheet item","Potatoes",,,,,,,,,,"Potatoe starch",,,,,,,,,,
+"Year","2020/21","2020/21 - Annotations","2021/22","2021/22 - Annotations","2022/23","2022/23 - Annotations","2023/24","2023/24 - Annotations","2024/25","2024/25 - Annotations","2020/21","2020/21 - Annotations","2021/22","2021/22 - Annotations","2022/23","2022/23 - Annotations","2023/24","2023/24 - Annotations","2024/25","2024/25 - Annotations",
+"Values",
+"PRODUCTION",885894,,769694,,686223,,594037,,693642,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"Initial stocks",-,,-,,-,,-,,-,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"Final stocks",-,,-,,-,,-,,-,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"Imports",268150,,275245,,253772,,292778,,298729,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"Exports",172620,,147149,,140021,,123866,,146067,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"DOMESTIC USE",981423,,897790,,799974,,762949,,846305,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"Animal feed",8000,,6000,,5000,,5000,,4000,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"Seeds",54149,,51459,,49495,,52552,,55031,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"Processing",78591,,75943,,69344,,61612,,67097,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"Industrial uses",243683,,197788,,147523,,108961,,104522,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"Losses",106307,,92363,,82347,,83165,,117919,,:,"G",:,"G",:,"G",:,"G",:,"G",
+"HUMAN CONSUMPTION",490693,,474237,,446265,,451659,,497736,,11500,,12000,,8500,,8100,,8400,,
+"Human consumption per capita (in kg)",54.9,,52.7,,49.0,,49.3,,54.1,,1.3,,1.3,,0.9,,0.9,,0.9,,
+"HUMAN CONSUMPTION (in potatoe equivalent)",-,,-,,-,,-,,-,,54374,,54036,,38479,,33959,,37041,,
+"Human consumption per capita (in kg)",-,,-,,-,,-,,-,,6.1,,6.0,,4.2,,3.7,,4.0,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",90,,86,,86,,78,,82,,342,,327,,287,,255,,234,,
+
+: data is concealed
+
+
+Symbol,Description
+"G","Disclosure control"
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for oil seeds as of 1994/95 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Time series adjustment until 30 April of the year following the reporting period and in July of the year following the reporting period, when final trade data are available. Last update: [2026-04-30] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"Imports","including potatoe products"
+"Processing","for starch on food sector"
+"Industrial uses","for starch on technical sector"
+"Human consumption per capita (in kg)","Human consumption pportioned to the average resident population of the respective reference period."
+"Human consumption per capita (in kg)","Human consumption pportioned to the average resident population of the respective reference period."
+"DEGREE OF SELF-SUFFICIENCY (in %)","Share of production in consumption."
+"Balance sheet item","If not mentioned separately, indicated figures are in tonnes."
+"Year","All data relate to the crop year (1 July to 30 June of the following year)."
+
+
+(c) Copyright Statistics Austria

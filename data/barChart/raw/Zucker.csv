@@ -1,0 +1,39 @@
+STATcube
+
+"Supply balance sheet for oil seeds as of 1994/95 in tonnes (G Q)"
+"Values by Balance sheet item and Year"
+"Counting: PRODUCTION, Initial stocks, Final stocks, Imports, Imports as sugar, Imports in products containing sugar, Exports, Exports as sugar, Exports in products containing sugar, DOMESTIC USE, Animal feed, Industrial uses, HUMAN CONSUMPTION, Human consumption per capita (in kg), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Balance sheet item","Sugar",,,,,,,,,,
+"Year","2020/21","2020/21 - Annotations","2021/22","2021/22 - Annotations","2022/23","2022/23 - Annotations","2023/24","2023/24 - Annotations","2024/25","2024/25 - Annotations",
+"Values",
+"PRODUCTION",307278,,466295,,389206,,413850,,481854,,
+"Initial stocks",:,"G",:,"G",:,"G",:,"G",:,"G",
+"Final stocks",:,"G",:,"G",:,"G",:,"G",:,"G",
+"Imports",482501,,472367,,465850,,479295,,488108,,
+"Imports as sugar",260189,,238491,,223615,,226146,,232647,,
+"Imports in products containing sugar",222312,,233876,,242235,,253149,,255461,,
+"Exports",534504,,649799,,560007,,653067,,678959,,
+"Exports as sugar",97845,,177712,,82496,,193327,,201408,,
+"Exports in products containing sugar",436659,,472088,,477512,,459739,,477551,,
+"DOMESTIC USE",:,"G",:,"G",:,"G",:,"G",:,"G",
+"Animal feed",:,"G",:,"G",:,"G",:,"G",:,"G",
+"Industrial uses",:,"G",:,"G",:,"G",:,"G",:,"G",
+"HUMAN CONSUMPTION",266769,,255586,,258947,,254533,,246182,,
+"Human consumption per capita (in kg)",29.9,,28.4,,28.5,,27.8,,26.8,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",:,"G",:,"G",:,"G",:,"G",:,"G",
+
+: data is concealed
+
+
+Symbol,Description
+"G","Disclosure control"
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for oil seeds as of 1994/95 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Time series adjustment until 30 April of the year following the reporting period and in July of the year following the reporting period, when final trade data are available. Last update: [2026-04-30] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"Human consumption per capita (in kg)","Human consumption pportioned to the average resident population of the respective reference period."
+"DEGREE OF SELF-SUFFICIENCY (in %)","Share of production in consumption."
+"Balance sheet item","If not mentioned separately, indicated figures are in tonnes."
+"Year","The supply balance sheets for sugar relate to the crop year: * until 2006/2007: period from 1 July to 30 June of the following calendar year; * as of 2007/2008: period from 1 October to 30 September of the following calendar year;"
+
+
+(c) Copyright Statistics Austria

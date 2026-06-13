@@ -1,0 +1,25 @@
+STATcube
+
+"Supply balance sheet for fishes as of 1995 in tonnes (Q)"
+"Values by Balance sheet item and Year"
+"Counting: PRODUCTION, Imports, Exports, HUMAN CONSUMPTION, Human consumption per capita (in kg), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Balance sheet item","Fish",,,,,,,,,,
+"Year","2020","2020 - Annotations","2021","2021 - Annotations","2022","2022 - Annotations","2023","2023 - Annotations","2024","2024 - Annotations",
+"Values",
+"PRODUCTION",4700,,5200,,5200,,5670,,5670,,
+"Imports",70084,,72606,,77136,,77515,,81326,,
+"Exports",9642,,12313,,16998,,11490,,13830,,
+"HUMAN CONSUMPTION",65142,,65493,,65338,,71695,,73166,,
+"Human consumption per capita (in kg)",7.3,,7.3,,7.2,,7.9,,8.0,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",7,,8,,8,,8,,8,,
+
+
+Symbol,Description
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for fishes as of 1995 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Time series adjustment until 31 August of the calendar year following the reporting period. Last update: [2025-09-01] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"Balance sheet item","If not mentioned separately, indicated figures are in tonnes."
+"Year","All data relate to calendar years (1 January to 31 December)."
+
+
+(c) Copyright Statistics Austria

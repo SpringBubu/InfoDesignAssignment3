@@ -1,0 +1,34 @@
+STATcube
+
+"Supply balance sheet for oil seeds as of 1994/95 in tonnes (Q)"
+"Values by Balance sheet item and Year"
+"Counting: PRODUCTION, Initial stocks, Final stocks, Imports, Exports, DOMESTIC USE, Animal feed, Seeds, Processing, Losses, HUMAN CONSUMPTION, Human consumption per capita (in kg), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Balance sheet item","Total oil seeds",,"Rape and turnip rape",,"Sunflower seeds",,"Soya beans",,"Other oil seeds",,
+"Year","2024/25","2024/25 - Annotations","2024/25","2024/25 - Annotations","2024/25","2024/25 - Annotations","2024/25","2024/25 - Annotations","2024/25","2024/25 - Annotations",
+"Values",
+"PRODUCTION",398208,,70715,,52901,,246271,,28321,,
+"Initial stocks",116500,,25700,,20500,,66800,,3500,,
+"Final stocks",81800,,15700,,10600,,50500,,5000,,
+"Imports",644368,,259494,,147073,,173885,,63916,,
+"Exports",238392,,25854,,62351,,115862,,34324,,
+"DOMESTIC USE",838884,,314355,,147523,,320593,,56413,,
+"Animal feed",106401,,-,,18902,,84918,,2581,,
+"Seeds",9199,,80,,145,,8562,,412,,
+"Processing",646111,,312861,,117418,,194188,,21644,,
+"Losses",8051,,1414,,1058,,4925,,653,,
+"HUMAN CONSUMPTION",69123,,-,,10000,,28000,,31123,,
+"Human consumption per capita (in kg)",7.5,,-,,1.1,,3.0,,3.4,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",47,,22,,36,,77,,50,,
+
+
+Symbol,Description
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for oil seeds as of 1994/95 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Time series adjustment until 30 April of the year following the reporting period and in July of the year following the reporting period, when final trade data are available. Last update: [2026-04-30] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"Human consumption per capita (in kg)","Human consumption pportioned to the average resident population of the respective reference period."
+"DEGREE OF SELF-SUFFICIENCY (in %)","Share of production in consumption."
+"Balance sheet item","If not mentioned separately, indicated figures are in tonnes."
+"Year","All data relate to the crop year (1 July to 30 June of the following year)."
+
+
+(c) Copyright Statistics Austria

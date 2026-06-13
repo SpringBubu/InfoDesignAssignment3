@@ -1,0 +1,33 @@
+STATcube
+
+"Supply balance sheet for animal fats as of 1995 in tonnes (Q)"
+"Values by Balance sheet item and Year"
+"Counting: GROSS INDIGENOUS PRODUCTION, Gross indigenous production from imported live animals, Gross indigenous production from exported live animals, NET PRODUCTION, Imports, Exports, DOMESTIC USES, Animal feed, Industrial uses, HUMAN CONSUMPTION, Human consumption per capita (in kg), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Balance sheet item","Animal fats",,,,,,,,,,
+"Year","2020","2020 - Annotations","2021","2021 - Annotations","2022","2022 - Annotations","2023","2023 - Annotations","2024","2024 - Annotations",
+"Values",
+"GROSS INDIGENOUS PRODUCTION",126161,,130860,,125766,,120504,,122093,,
+"Gross indigenous production from imported live animals",6693,,6987,,6682,,6288,,6660,,
+"Gross indigenous production from exported live animals",1637,,1278,,1202,,1574,,1326,,
+"NET PRODUCTION",131217,,136568,,131246,,125217,,127428,,
+"Imports",34854,,28657,,28616,,27429,,25448,,
+"Exports",42954,,33166,,30680,,27916,,30291,,
+"DOMESTIC USES",123117,,132059,,129181,,124730,,122585,,
+"Animal feed",1047,,1134,,858,,655,,607,,
+"Industrial uses",63989,,74997,,74188,,73429,,71159,,
+"HUMAN CONSUMPTION",58081,,55929,,54136,,50646,,50819,,
+"Human consumption per capita (in kg)",6.5,,6.2,,6.0,,5.5,,5.5,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",102,,99,,97,,97,,100,,
+
+
+Symbol,Description
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for animal fats as of 1995 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Time series adjustment until 31 August of the calendar year following the reporting period. Last update: [2025-09-01] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"GROSS INDIGENOUS PRODUCTION","Cut-off fats (also included in meat balance), offal fat, fat from rendering"
+"Industrial uses","as of 2001: including fat for heating."
+"Balance sheet item","If not mentioned separately, indicated figures are in tonnes."
+"Year","All data relate to calendar years (1 January to 31 December)."
+
+
+(c) Copyright Statistics Austria

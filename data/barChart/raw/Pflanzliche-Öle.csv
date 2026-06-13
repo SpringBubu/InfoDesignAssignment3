@@ -1,0 +1,38 @@
+STATcube
+
+"Supply balance sheet for oil seeds as of 1994/95 in tonnes (Q)"
+"Values by Balance sheet item and Year"
+"Counting: PRODUCTION, Initial stocks, Final stocks, Imports, Exports, DOMESTIC USE, Animal feed, Processing, Processing: Margarine, Processing: other prepared edible fats, Industrial uses, Losses, HUMAN CONSUMPTION, Human consumption per capita (in kg), DEGREE OF SELF-SUFFICIENCY (in %)"
+
+"Balance sheet item","Vegetable fats and oils",,,,,,,,,,
+"Year","2020/21","2020/21 - Annotations","2021/22","2021/22 - Annotations","2022/23","2022/23 - Annotations","2023/24","2023/24 - Annotations","2024/25","2024/25 - Annotations",
+"Values",
+"PRODUCTION",237778,,234065,,201223,,248926,,225109,,
+"Initial stocks",3000,,8000,,3000,,5000,,9000,,
+"Final stocks",8000,,3000,,5000,,9000,,7500,,
+"Imports",402089,,246790,,269833,,282979,,335892,,
+"Exports",185255,,116910,,121472,,137559,,138562,,
+"DOMESTIC USE",449612,,368946,,347584,,390346,,423940,,
+"Animal feed",15500,,16000,,16800,,16900,,16800,,
+"Processing",75598,,85098,,78039,,83463,,82221,,
+"Processing: Margarine",16826,,16242,,15026,,18530,,14343,,
+"Processing: other prepared edible fats",58772,,68856,,63013,,64933,,67878,,
+"Industrial uses",226167,,129214,,115430,,152808,,187799,,
+"Losses",15247,,14034,,14215,,16476,,17819,,
+"HUMAN CONSUMPTION",117100,,124600,,123100,,120700,,119300,,
+"Human consumption per capita (in kg)",13.1,,13.9,,13.5,,13.2,,13.0,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",25,,34,,35,,32,,26,,
+
+
+Symbol,Description
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for oil seeds as of 1994/95 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Time series adjustment until 30 April of the year following the reporting period and in July of the year following the reporting period, when final trade data are available. Last update: [2026-04-30] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"Industrial uses","Technical und chemical industry."
+"HUMAN CONSUMPTION","Including quantities used in food industry."
+"Human consumption per capita (in kg)","Human consumption pportioned to the average resident population of the respective reference period."
+"DEGREE OF SELF-SUFFICIENCY (in %)","Share of production in consumption, calculated on the basis of the oil value of oilseed production."
+"Balance sheet item","Quantities in pure fat; if not mentioned separately, indicated figures are in tonnes."
+"Year","All data relate to the crop year (1 July to 30 June of the following year)."
+
+
+(c) Copyright Statistics Austria

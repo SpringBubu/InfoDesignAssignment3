@@ -26,13 +26,16 @@
 No restrictions on programming tools or libraries, but encouraged to use D3.js. 
 The only exception is the use of dashboarding or non-programming software like Tableau or Power BI.
 
-## Data Sets
+### Data Sets
+Currently, the current file structure groups data sets per diagram. In the subdirectory of each diagram you will find another folder
+containing the raw data and a data.csv that contains a cleaned up, more usable version of the raw data.
+
 - Dataset A: Austrian Macro-Consumption: 
   - URL: https://www.statistik.at/statistiken/land-und-forstwirtschaft/landwirtschaftliche-bilanzen/versorgungsbilanzen
-  - FILE: Could not find any CSV or JSON file, might need manual work
+  - USE: Bar Chart
 - Dataset B: Environmental Life Cycle Assessments
   - URL: https://ourworldindata.org/environmental-impacts-of-food
-  - FILE: food-footprints.csv
+  - USE: Scatter Plot
+  - NOTE: CSV states 2010 as year, but according to website the data is from 2018, so there might be an error.
 - Dataset C: High-Resolution Nutritional Biochemistry Profiles
   - URL: https://fdc.nal.usda.gov/download-datasets.html
-  - FILE: FoodData_Central_foundation_food_json_2026-04-30.json (also other, larger data available on that site)

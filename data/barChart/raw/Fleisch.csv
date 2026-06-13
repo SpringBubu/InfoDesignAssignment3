@@ -1,0 +1,37 @@
+STATcube
+
+"Supply balance sheet for meat by species as of 1994 in tonnes (Q)"
+"Values by Balance sheet item and Year"
+"Counting: GROSS INDIGENOUS PRODUCTION, Imports of live animals, Exports of live animals, NET PRODUCTION, Initial stocks, Final stocks, Imports, Exports, DOMESTIC CONSUMPTION, Domestic consumption per capita (in kg), DEGREE OF SELF-SUFFICIENCY (in %), Human consumption, Human consumption per capita (in kg)"
+
+"Balance sheet item","Total meat",,,,,,,,,,
+"Year","2020","2020 - Annotations","2021","2021 - Annotations","2022","2022 - Annotations","2023","2023 - Annotations","2024","2024 - Annotations",
+"Values",
+"GROSS INDIGENOUS PRODUCTION",909078,,905255,,879067,,853533,,860086,,
+"Imports of live animals",82694,,83954,,78914,,78882,,80524,,
+"Exports of live animals",21226,,18087,,19855,,22328,,19892,,
+"NET PRODUCTION",970545,,971122,,938126,,910088,,920718,,
+"Initial stocks",-,,-,,-,,-,,-,,
+"Final stocks",-,,-,,-,,-,,-,,
+"Imports",336019,,354691,,364325,,378531,,402401,,
+"Exports",498590,,532449,,502743,,493457,,517998,,
+"DOMESTIC CONSUMPTION",807974,,793270,,799617,,795059,,805058,,
+"Domestic consumption per capita (in kg)",90.7,,88.6,,88.3,,87.1,,87.7,,
+"DEGREE OF SELF-SUFFICIENCY (in %)",113,,114,,110,,107,,107,,
+"Human consumption",538760,,528027,,531137,,527104,,532338,,
+"Human consumption per capita (in kg)",60.5,,59.0,,58.7,,57.7,,58.0,,
+
+
+Symbol,Description
+"Q","STATcube – Statistical Database of STATISTICS AUSTRIA"
+"Supply balance sheet for meat by species as of 1994 in tonnes",".) Subject of the statistics: Supply balance sheets are used to represent the supply and use of agricultural production of plant and animal origin. The balance sheets also supply information about parameters such as the degree of self-sufficiency and per capita consumption. .) Legal basis: Agreement with the Federal Ministry of Agriculture, Forestry, Regions and Water Management – BML. .) Updating: Time series adjustment until 31 August of the calendar year following the reporting period. Last update: [2025-09-01] .) Contact details: Directorate Spatial Statistics - Supply Balance Sheets DI Martin HOFER, phone +43 1 711 28-7113 Martin.Hofer@statistik.gv.at Mag.a Marie-Theres WANDL, phone +43 1 711 28-8171 Marie-Theres.Wandl@statistik.gv.at Other Metadata: https://www.statistik.at/en/statistics/agriculture-and-forestry/agricultural-balance-sheets/supply-balance-sheets"
+"GROSS INDIGENOUS PRODUCTION","Net production (domestic slaughterings) plus exported live animals, minus imported live animals."
+"DOMESTIC CONSUMPTION","Refers to the carcass weight (i.e. including bones)."
+"Domestic consumption per capita (in kg)","Refers to the carcass weight (i.e. including bones)."
+"Human consumption","Factors are used to calculate the proportion of bones, industrial utilisation, losses on the way to the consumer and cooking losses as well as use for pet food per animal species and deducted from the domestic consumption (gross consumption) and thus approximately calculate the ""human consumption"" (net consumption)."
+"Human consumption per capita (in kg)","Factors are used to calculate the proportion of bones, industrial utilisation, losses on the way to the consumer and cooking losses as well as use for pet food per animal species and deducted from the domestic consumption (gross consumption) and thus approximately calculate the ""human consumption"" (net consumption)."
+"Balance sheet item","If not mentioned separately, indicated figures are in tonnes of carcass weight."
+"Year","All data relate to calendar years (1 January to 31 December)."
+
+
+(c) Copyright Statistics Austria
