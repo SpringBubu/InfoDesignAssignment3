@@ -6,7 +6,10 @@ function meow() {
 }
 
 function main() {
-    scatterPlot();
+    barChart().then(() => console.log("loaded bar chart"));
+    sankey().then(() => console.log("loaded sankey diagram"));
+    scatterPlot().then(() => console.log("loaded scatter plot"));
+    networkGraph().then(() => console.log("loaded network graph"));
 }
 
 function loadVersorgungsbilanzen() {
@@ -20,17 +23,37 @@ function loadVersorgungsbilanzen() {
         // ])
         .catch(function (err) {
             console.error(`Something went wrong when trying to read data: ${err}`);
+            return[];
         });
 }
 
-// Inspired by
-// - https://d3-graph-gallery.com/graph/scatter_basic.html
-// - https://gist.github.com/d3noob/3aa3bbe05ee97b35af660c25ee27213b
 function loadFoodFootprints() {
     return d3.csv("./data/scatterPlot/data.csv")
     .catch(function (err) {
         console.error(`Something went wrong when trying to read data: ${err}`);
+        return [];
     });
+}
+
+function placeholder(id, color) {
+    const svg = d3.select(`#${id}`)
+        .append("svg")
+            .attr("width", 100)
+            .attr("height", 100)
+        .append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", 100)
+            .attr("height", 100)
+            .attr("fill", color);
+}
+
+async function barChart() {
+    placeholder("bar-chart", "purple");
+}
+
+async function sankey() {
+    placeholder("sankey", "cyan");
 }
 
 // TODO:
@@ -38,6 +61,9 @@ function loadFoodFootprints() {
 //  - [ ] adjust text to be actually readable
 //  - [ ] adjust color scheme
 //  - [ ] adjust sizing
+// Inspired by
+// - https://d3-graph-gallery.com/graph/scatter_basic.html
+// - https://gist.github.com/d3noob/3aa3bbe05ee97b35af660c25ee27213b
 async function scatterPlot() {
 
     // diagram size stuff, the width/height refer to the diagram's size, not the SVG's
@@ -140,4 +166,8 @@ async function scatterPlot() {
             .attr("y", function(entry) { return y(+entry[yAxisData]); })
             .text(function(entry) { return entry["entity"] });
     });
+}
+
+async function networkGraph() {
+    placeholder("network-graph", "gold");
 }
