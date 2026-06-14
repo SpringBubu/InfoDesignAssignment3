@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>InfoDesign Assigment 3</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="d3.v7.js"></script>
-    <script src="main.js"></script>
-</head>
-<body>
-<h1>
-    Hello :)
-</h1>
-<img id="gadse" src="hellowww.gif" alt="waving cat" title="It is I, the polite waving cat."/>
-<div id="bar-chart"></div>
-<div id="sankey"></div>
-<div id="scatterplot"></div>
-<div id="network-graph"></div>
-</body>
-<script>
-    main();
+    <head>
+        <meta charset="UTF-8" />
+        <title>InfoDesign Assigment 3</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="d3.v7.js"></script>
+        <script src="main.js" type="module"></script>
+    </head>
+    <body>
+        <h1>Hello :)</h1>
+        <img id="gadse" src="hellowww.gif" alt="waving cat" title="It is I, the polite waving cat." />
 
-    document
-        .getElementById("gadse")
-        .addEventListener("click", function () {
-            meow();
+        <div id="bar-chart"></div>
+        <div id="sankey"></div>
+        <div id="scatterplot"></div>
+        <div id="network-graph"></div>
+    </body>
+    <script>
+        // main(); // rufen wir in main.js selbst auf (das wird erst ausgeführt nachdem das dom geladen ist)
+
+        // Das crazy.... ich sage auch immer gadse (und ferd 🐴)
+        document.getElementById("gadse").addEventListener("click", function () {
+            window.alert("meow");
+            console.log("meowed");
         });
-</script>
+    </script>
 </html>
