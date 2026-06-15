@@ -39,12 +39,12 @@ export async function scatter() {
     // create SVG
     const svg = d3.select("#scatterplot")
         .append("svg")
-            .attr("id", "scatterPlotSVG")
-            .attr("width", width + margins.left + margins.right)
-            .attr("height", height + margins.top + margins.bottom)
+        .attr("id", "scatterPlotSVG")
+        .attr("width", width + margins.left + margins.right)
+        .attr("height", height + margins.top + margins.bottom)
         .append("g")
-            .attr("id", "scatterPlotViewport")
-            .attr("transform", `translate(${margins.left}, ${margins.top})`);
+        .attr("id", "scatterPlotViewport")
+        .attr("transform", `translate(${margins.left}, ${margins.top})`);
 
     // prevents page scroll when zoom reaches max/min (from https://forum.babylonjs.com/t/how-to-avoid-scrolling-while-zooming/15609)
     svg.node().addEventListener("wheel", event => event.preventDefault())
@@ -70,27 +70,31 @@ export async function scatter() {
         .insert("form", "svg");
 
     views.append("input")
+        .attr("id", "radio-kg")
         .attr("type", "radio")
         .attr("value", "kilogram")
         .attr("name", "scatter")
         .attr("checked", "true");
 
     views.append("label")
-        .html("per kilogram");
+        .html("per kilogram")
+        .attr("for", "radio-kg");
 
     views.append("input")
+        .attr("id", "radio-protein")
         .attr("type", "radio")
         .attr("value", "protein")
         .attr("name", "scatter");
 
     views.append("label")
-        .html("per 100g protein");
+        .html("per 100g protein")
+        .attr("for", "radio-protein");
 
     loadDatasetB().then(data => {
         let unit = d3.select('input[name="scatter"]:checked').node().value;
         createPlot(data, unit);
 
-        views.on("change", function() {
+        views.on("change", function () {
             unit = d3.select('input[name="scatter"]:checked').node().value;
             d3.select("#scatterPlotGraph")
                 .transition()
@@ -147,23 +151,23 @@ function createPlot(data, unit) {
         .attr("y", -margins.left * 0.6)
         .attr("font-size", "1em")
         .attr("font-weight", "bold")
-        .text(`Greenhouse gas emissions, in C0₂ per ${ unit === "kilogram" ? "kg" : "100g of protein"}`)
+        .text(`Greenhouse gas emissions, in C0₂ per ${unit === "kilogram" ? "kg" : "100g of protein"}`)
         .style("opacity", "0.0")
         .transition()
         .duration(500)
         .style("opacity", "1.0");
 
-   viewport.append("text")
+    viewport.append("text")
         .attr("text-anchor", "end")
         .attr("x", width)
         .attr("y", height + margins.bottom - margins.top * 0.5)
         .attr("font-size", "1em")
         .attr("font-weight", "bold")
-        .text(`Land use, in m² per ${ unit === "kilogram" ? "kg" : "100g of protein"}`)
-       .style("opacity", "0.0")
-       .transition()
-       .duration(500)
-       .style("opacity", "1.0");
+        .text(`Land use, in m² per ${unit === "kilogram" ? "kg" : "100g of protein"}`)
+        .style("opacity", "0.0")
+        .transition()
+        .duration(500)
+        .style("opacity", "1.0");
 
     viewport.append("text")
         .attr("text-anchor", "end")
@@ -185,8 +189,8 @@ function createPlot(data, unit) {
     const filteredData = unit === "protein"
         ? data.filter(entry => {
             return entry[ghgEmissionsProtein] !== ""
-                && entry[landUseProtein]      !== ""
-                && entry[freshwaterProtein]   !== "";
+                && entry[landUseProtein] !== ""
+                && entry[freshwaterProtein] !== "";
         })
         : data;
 
@@ -221,7 +225,7 @@ function createPlot(data, unit) {
 
     // Zooming and panning stuff:
 
-    function updateViewport({transform}) {
+    function updateViewport({ transform }) {
         const newX = transform.rescaleX(x);
         const newY = transform.rescaleY(y);
         const scale = transform.k;
@@ -241,7 +245,7 @@ function createPlot(data, unit) {
                 const size = entry[radiusData] * milli * scale;
                 return size > 3 ? size : 0;
             })
-        ;
+            ;
     }
 
     const zoom = d3.zoom()
@@ -259,7 +263,7 @@ function createPlot(data, unit) {
         .call(zoom);
 
     // add functionality to reset button
-    d3.select("#scatterPlotReset").on("click", function() {
+    d3.select("#scatterPlotReset").on("click", function () {
         zoomArea.transition()
             .duration(500)
             .call(zoom.transform, d3.zoomIdentity);
