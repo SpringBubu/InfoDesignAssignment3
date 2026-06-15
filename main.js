@@ -11,3 +11,7 @@ function main() {
 main();
 
 window.customElements.define("emoji-canvas", EmojiCanvas);
+
+/* setTimeout(() => {
+    document.querySelector("emoji-canvas").redraw();
+}, 1000); */

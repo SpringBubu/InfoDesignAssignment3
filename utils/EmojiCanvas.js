@@ -57,14 +57,15 @@ export class EmojiCanvas extends HTMLElement {
         this.ctx.fillRect(0, 0, width, height);
 
         const cell = scale + spacing;
+        const half = cell / 2;
         let offset = 0;
         this.ctx.fillStyle = "#000";
         for (let cx = 0; cx < cols; cx++) {
-            for (let cy = 0; cy < rows; cy++) {
-                const x = cx * cell + cell / 2;
-                const y = (cy * cell + cell / 2 + offset) % (height - scale / 2);
-                const e = emoji(cy + cx);
-
+            for (let cy = 0; cy < rows + 1; cy++) {
+                const ty = (cy + offset) % (rows + 1);
+                const x = cx * cell + half;
+                const y = ty * cell;
+                const e = emoji(Math.abs(cy) + Math.abs(cx));
 
                 /* this.ctx.fillStyle = "#fff"
                 const r = Math.min(scale * 0.6, (scale + spacing - 0) / 2);
@@ -78,7 +79,7 @@ export class EmojiCanvas extends HTMLElement {
 
                 this.ctx.fillText(e, x - offsetX, y - offsetY);
             }
-            offset += scale * 5.5;
+            offset += 0.067;
         }
     }
 }
