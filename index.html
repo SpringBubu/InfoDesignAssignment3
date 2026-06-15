@@ -20,29 +20,30 @@
             <div class="page flex down center">
                 <h1 class="c-bg text-shadow">The <span class="c-accent">Au</span>str<span class="c-accent">ian</span> Diet</h1>
 
-                <a class="flex down center c-bg" style="font-size: 2rem" href="#intro">
-                    <span>Learn about ....</span>
-                    <span>&#65088;</span>
-                </a>
-            </div>
+                <div class="c-bg" style="font-size: 2rem; width: 70%">
+                    <p>
+                        Hier steht eine kurze einleitung: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat totam quisquam
+                        aliquam maxime commodi rerum quaerat harum perferendis. Non placeat quam quisquam aliquam voluptates. Aliquam sit
+                        accusamus harum pariatur exercitationem!
+                    </p>
 
-            <div id="intro">
-                <p>
-                    Hier steht eine kurze einleitung: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur, dolor. Quibusdam
-                    fugiat nulla, odit, quos, soluta maxime sed quam delectus dignissimos accusantium doloremque dolorem? Dolorem velit
-                    totam corporis cumque assumenda.
-                </p>
-
-                <div style="text-align: center; font-size: 2rem">
-                    <a style="color: var(--fg)" href="#macro-balance"> &#65088;</a>
+                    <a class="flex down center c-bg" href="#macro-balance">
+                        <span>Learn more</span>
+                        <span>&#65088;</span>
+                    </a>
                 </div>
             </div>
         </div>
 
         <div data-section="macro-balance" id="macro-balance" class="page">
-            <h2 class="text-shadow">The Macro balance</h2>
+            <h2>The Macro balance</h2>
             <p>worum geht's jetzt und was ist das diagram</p>
             <div id="bar-chart"></div>
+
+            <a class="flex down center" style="margin: 4rem 0px; color: var(--fg)" href="#cheese-and-cost">
+                <span>Next</span>
+                <span>&#65088;</span>
+            </a>
         </div>
 
         <div data-section="cheese-and-cost" id="cheese-and-cost">
@@ -55,12 +56,17 @@
                 <div class="split c-bg" style="gap: 1rem; align-items: center; padding: 4rem 2rem">
                     <h2 class="c-bg">Cheese & Ecological Cost</h2>
                     <div class="splitter"></div>
-                    <p style="font-size: 1.2rem">
-                        Creating dairy products requires a staggering amount of resources. To produce just <b>1 kg of hard cheese</b>,
-                        Austrian dairies process roughly <b>10 liters of raw milk</b>, leaving behind 9 liters of liquid whey and water
-                        loss. While this physical mass balance looks straightforward, the true environmental toll remains hidden beneath the
-                        surface.
-                    </p>
+                    <div style="font-size: 1.2rem">
+                        <p>
+                            Creating dairy products requires a staggering amount of resources. To produce just <b>1 kg of hard cheese</b>,
+                            Austrian dairies process roughly <b>10 liters of raw milk</b>, leaving behind 9 liters of liquid whey and water
+                            loss.
+                        </p>
+                        <p>
+                            While this physical mass balance looks straightforward, the true environmental toll remains hidden beneath the
+                            surface.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="surface flex down center" style="flex: 1">
@@ -70,17 +76,32 @@
                     </div>
 
                     <div id="sankey"></div>
+
+                    <a class="flex down center" style="margin: 4rem 0px; color: var(--fg)" href="#env-shift">
+                        <span>Next</span>
+                        <span>&#65088;</span>
+                    </a>
                 </div>
             </div>
         </div>
 
         <div data-section="env-shift" id="env-shift" class="page flex down">
-            <h2 style="padding: 1rem" class="text-shadow">The Environmental Shift</h2>
+            <div class="bg">
+                <div class="overlay"></div>
+                <emoji-canvas emojis="🌱 🚲"></emoji-canvas>
+            </div>
+
+            <h2 style="padding: 2rem" class="c-bg">The Environmental Shift</h2>
 
             <div class="surface" style="flex: 1">
                 <div id="scatterplot"></div>
 
-                <div>Was sehen sie hier?</div>
+                <div>TODO: Beschrieben was das diagram zeigt/wie verwenden</div>
+
+                <a class="flex down center" style="margin: 4rem 0px; color: var(--fg)" href="#bio-sandbox">
+                    <span>Next</span>
+                    <span>&#65088;</span>
+                </a>
             </div>
         </div>
 
@@ -100,9 +121,27 @@
             </div>
 
             <div id="network-graph"></div>
+
+            <a class="flex down center" style="margin: 4rem 0px; color: var(--fg)" href="#conclusio">
+                <span>Conclusion</span>
+                <span>&#65088;</span>
+            </a>
         </div>
 
-        <div class="page">Schlussfolgderung? und unsere namen?</div>
+        <div data-section="conclusio" id="conclusio" class="page flex down">
+            <div style="flex: 1">Schlussfolgderung?</div>
+
+            <div style="height: 300px; position: relative">
+                <emoji-canvas style="position: absolute; z-index: -1" emojis="👨‍🎓 🧑‍💻  " height="300"></emoji-canvas>
+                <div class="overlay" style="z-index: -1"></div>
+
+                <div class="flex center c-bg" style="justify-content: space-evenly; height: 100%; font-size: 1.5rem">
+                    <span style="list-style: circle">Benjamin Serlath</span>
+                    <span style="list-style: circle">Michael Hagmann</span>
+                    <span style="list-style: circle">Julian Kusternigg</span>
+                </div>
+            </div>
+        </div>
     </body>
     <script>
         // main(); // rufen wir in main.js selbst auf (das wird erst ausgeführt nachdem das dom geladen ist)

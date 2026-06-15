@@ -8,6 +8,7 @@ html {
     scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
     scrollbar-width: thin;
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory
 }
 
 body {
@@ -48,6 +49,7 @@ div[data-section] {
 .page {
     position: relative;
     min-height: 100vh;
+    /* scroll-snap-align: center; */
 }
 
 .bg {
@@ -87,13 +89,8 @@ div[data-section] {
 }
 
 .split>div.splitter {
-    height: 100%;
+    align-self: stretch;
     border: 1px solid var(--bg);
-}
-
-#intro {
-    padding: 2rem;
-    font-size: 1.25rem;
 }
 
 .surface {
