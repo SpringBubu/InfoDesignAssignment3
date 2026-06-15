@@ -40,13 +40,6 @@ a {
     text-decoration: none;
 }
 
-/* For now simple container style, needs to be replaced by narrative flow */
-div.plot {
-    border-radius: 8px;
-    background-color: #8cceb8;
-    padding: 0.5rem;
-    margin: 1rem;
-}
 
 div[data-section] {
     position: relative;
@@ -54,7 +47,7 @@ div[data-section] {
 
 .page {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .bg {
