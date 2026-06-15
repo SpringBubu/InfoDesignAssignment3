@@ -25,7 +25,7 @@ const freshwaterProtein = "Freshwater withdrawals per 100g protein";
 
 // TODO:
 //  - [x] add interactivity
-//  - [~] adjust text to be actually readable
+//  - [x] adjust text to be actually readable
 //  - [x] adjust color scheme
 //  - [ ] adjust sizing
 // Inspired by
@@ -182,16 +182,23 @@ function createPlot(data, unit) {
         .data(filteredData)
         .enter();
 
+    const milli = 0.001;
+
     node.append("circle")
-        .attr("r", function (entry) { return entry[radiusData] * 0.001 })
+        .attr("r", function (entry) { return entry[radiusData] * milli })
         .attr("cx", function (entry) { return x(+entry[xAxisData]); })
         .attr("cy", function (entry) { return y(+entry[yAxisData]); })
         .style("fill", "var(--accent)")
         .style("opacity", "0.8");
 
     node.append("text")
-        .attr("x", function (entry) { return x(+entry[xAxisData]); })
-        .attr("y", function (entry) { return y(+entry[yAxisData]); })
+        .attr("font-size", function (entry) {
+            const size = entry[radiusData] * milli;
+            return size > 3 ? size : 0;
+        })
+        .attr("x", function (entry) { return x(+entry[xAxisData]) + entry[radiusData] * milli; })
+        .attr("y", function (entry) { return y(+entry[yAxisData]) + entry[radiusData] * milli * 0.3; })
+        .style("opacity", "0.8")
         .text(function (entry) { return entry["Entity"] });
 
     // Zooming and panning stuff:
@@ -205,17 +212,22 @@ function createPlot(data, unit) {
         yAxis.call(d3.axisLeft(newY))
 
         scatter.selectAll("circle")
-            .attr("r", function (entry) { return entry[radiusData] * 0.001 * scale })
+            .attr("r", function (entry) { return entry[radiusData] * milli * scale })
             .attr("cx", function (entry) { return newX(+entry[xAxisData]); })
             .attr("cy", function (entry) { return newY(+entry[yAxisData]); });
 
         scatter.selectAll("text")
-            .attr("x", function (entry) { return newX(+entry[xAxisData]); })
-            .attr("y", function (entry) { return newY(+entry[yAxisData]); });
+            .attr("x", function (entry) { return newX(+entry[xAxisData]) + entry[radiusData] * milli * scale; })
+            .attr("y", function (entry) { return newY(+entry[yAxisData]) + entry[radiusData] * milli * 0.3 * scale; })
+            .attr("font-size", function (entry) {
+                const size = entry[radiusData] * milli * scale;
+                return size > 3 ? size : 0;
+            })
+        ;
     }
 
     const zoom = d3.zoom()
-        .scaleExtent([.5, 300])
+        .scaleExtent([.5, 500])
         .extent([[0, 0], [width, height]])
         .on("zoom", updateViewport);
 
