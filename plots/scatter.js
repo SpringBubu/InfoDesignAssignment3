@@ -9,7 +9,7 @@ const margins = {
     top: 10,
     right: 300,
     bottom: 40,
-    left: 160
+    left: 60
 };
 const width = 500;
 const height = 500;
@@ -26,7 +26,7 @@ const freshwaterProtein = "Freshwater withdrawals per 100g protein";
 // TODO:
 //  - [x] add interactivity
 //  - [~] adjust text to be actually readable
-//  - [ ] adjust color scheme
+//  - [x] adjust color scheme
 //  - [ ] adjust sizing
 // Inspired by
 // - https://d3-graph-gallery.com/graph/scatter_basic.html
@@ -128,30 +128,19 @@ function createPlot(data, unit) {
 
     // add labels
     viewport.append("text")
-        .attr("x", -margins.left)
-        .attr("y", margins.top)
-        .attr("font-size", "0.75em")
+        .attr("text-anchor", "end")
+        .attr("transform", "rotate(-90)")
+        .attr("x", 0)
+        .attr("y", -margins.left * 0.6)
+        .attr("font-size", "1em")
         .attr("font-weight", "bold")
-        .text("Greenhouse gas");
-
-    viewport.append("text")
-        .attr("x", -margins.left)
-        .attr("y", margins.top + 0.75 * EM)
-        .attr("font-size", "0.75em")
-        .attr("font-weight", "bold")
-        .text("emissions, in");
-
-    viewport.append("text")
-        .attr("x", -margins.left)
-        .attr("y", margins.top + 1.5 * EM)
-        .attr("font-size", "0.75em")
-        .attr("font-weight", "bold")
-        .text(`C0₂ per ${ unit === "kilogram" ? "kg" : "100g of protein"}`);
+        .text(`Greenhouse gas emissions, in C0₂ per ${ unit === "kilogram" ? "kg" : "100g of protein"}`);
 
    viewport.append("text")
-        .attr("x", width + EM)
-        .attr("y", height + 0.5 * EM)
-        .attr("font-size", "0.75em")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height + margins.bottom - margins.top * 0.5)
+        .attr("font-size", "1em")
         .attr("font-weight", "bold")
         .text(`Land use, in m² per ${ unit === "kilogram" ? "kg" : "100g of protein"}`);
 
@@ -161,18 +150,20 @@ function createPlot(data, unit) {
         .attr("font-size", "0.75em")
         .attr("font-weight", "bold")
         .text("Bubble size");
+
     viewport.append("text")
         .attr("x", width + EM)
         .attr("y", margins.top + 0.75 * EM)
         .attr("font-size", "0.75em")
         .attr("font-weight", "bold")
         .text("=");
+
     viewport.append("text")
         .attr("x", width + EM)
         .attr("y", margins.top + 1.5 * EM)
         .attr("font-size", "0.75em")
         .attr("font-weight", "bold")
-        .text(`Freshwater withdrawals per ${unit === "kilogram" ? "kg" : "100g of protein"}`);
+        .text(`Freshwater withdrawals in 1000l per ${unit === "kilogram" ? "kg" : "100g of protein"}`);
 
     // create scatter plot points
     const scatter = viewport.append('g')
@@ -192,10 +183,11 @@ function createPlot(data, unit) {
         .enter();
 
     node.append("circle")
-        .attr("r", function (entry) { return +entry[radiusData] / (rMax * 0.05) })
+        .attr("r", function (entry) { return entry[radiusData] * 0.001 })
         .attr("cx", function (entry) { return x(+entry[xAxisData]); })
         .attr("cy", function (entry) { return y(+entry[yAxisData]); })
-        .style("fill", "#FF0000");
+        .style("fill", "var(--accent)")
+        .style("opacity", "0.8");
 
     node.append("text")
         .attr("x", function (entry) { return x(+entry[xAxisData]); })
@@ -213,7 +205,7 @@ function createPlot(data, unit) {
         yAxis.call(d3.axisLeft(newY))
 
         scatter.selectAll("circle")
-            .attr("r", function (entry) { return (+entry[radiusData] * scale / (rMax * 0.05)) })
+            .attr("r", function (entry) { return entry[radiusData] * 0.001 * scale })
             .attr("cx", function (entry) { return newX(+entry[xAxisData]); })
             .attr("cy", function (entry) { return newY(+entry[yAxisData]); });
 
