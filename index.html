@@ -4,7 +4,10 @@
         <meta charset="UTF-8" />
         <title>InfoDesign Assigment 3</title>
         <link rel="stylesheet" href="style.css" />
-        <script src="d3.v7.js"></script>
+
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+
         <script src="main.js" type="module"></script>
     </head>
     <body>
@@ -52,13 +55,20 @@
                 <div class="split c-bg" style="gap: 1rem; align-items: center; padding: 4rem 2rem">
                     <h2 class="c-bg">Cheese & Ecological Cost</h2>
                     <div class="splitter"></div>
-                    <div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus molestiae vero, beatae laudantium corporis est
-                        adipisci libero nobis laboriosam esse, eaque deleniti. Repellendus, distinctio enim amet aut quas laborum ratione.
-                    </div>
+                    <p style="font-size: 1.2rem">
+                        Creating dairy products requires a staggering amount of resources. To produce just <b>1 kg of hard cheese</b>,
+                        Austrian dairies process roughly <b>10 liters of raw milk</b>, leaving behind 9 liters of liquid whey and water
+                        loss. While this physical mass balance looks straightforward, the true environmental toll remains hidden beneath the
+                        surface.
+                    </p>
                 </div>
 
-                <div class="surface" style="flex: 1" class="flex center">
+                <div class="surface flex down center" style="flex: 1">
+                    <div style="width: 50%; padding: 1rem">
+                        Click on "Cheese" to reveal the massive secondary flows of the ecological footprint: from greenhouse gas emissions
+                        to land use and virtual water withdrawal
+                    </div>
+
                     <div id="sankey"></div>
                 </div>
             </div>
