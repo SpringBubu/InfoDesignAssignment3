@@ -1,8 +1,8 @@
-import { placeholder } from "../utils/index.js";
+import { loadDatasetB } from "../utils/index.js";
 
-const margin = { top: 8, right: 250, bottom: 8, left: 200 },
-    width = 900 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+const margin = { top: 8, right: 250, bottom: 8, left: 200 };
+const width = 900 - margin.left - margin.right;
+const height = 500 - margin.top - margin.bottom;
 
 export async function sankey() {
 
@@ -13,13 +13,34 @@ export async function sankey() {
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const color = d3.scaleOrdinal()
-        .domain(["Milk", "Loss", "Cheese", "CO2", "Land", "Water"])
+        .domain(["Milk", "Loss", "Cheese", "GHG", "Land", "Water"])
         .range(["#aaa", "#555", "#fed330", "#da3939", "#26de81", "#45aaf2"]);
 
     const sankey = d3.sankey()
         .nodeWidth(30)
         .nodePadding(40)
         .size([width, height]);
+
+    const setB = await loadDatasetB();
+    console.log(setB);
+
+    const product = "Cheese";
+    const entry = setB.find(e => e["Entity"] == product);
+    const raw = {
+        waterWithdrawal: entry["Freshwater withdrawals per kilogram"],
+        ghg: entry["Ghg emissions per kilogram"],
+        landUse: entry["Land use per kilogram"],
+    };
+    const dist = {
+        waterWithdrawal: raw.waterWithdrawal / 10,
+        ghg: raw.ghg / 1,
+        landUse: raw.landUse / 1,
+    };
+    const sum = dist.waterWithdrawal + dist.ghg + dist.landUse;
+    dist.waterWithdrawal /= sum;
+    dist.ghg /= sum;
+    dist.landUse /= sum;
+    console.log(dist);
 
     let showImpact = false;
     const dataBase = {
@@ -40,16 +61,16 @@ export async function sankey() {
             { name: "Loss in Water", id: "Loss", valueStr: "9L" },
             { name: "Cheese", id: "Cheese", valueStr: "1kg" },
             // Ebene 2 mit echten Einheiten:
-            { name: "CO₂ emissions", id: "CO2", valueStr: "8.5kg" },
-            { name: "land use", id: "Land", valueStr: "25m²" },
-            { name: "Water withdrawal", id: "Water", valueStr: "5.000L" }
+            { name: "GHG emissions", id: "GHG", valueStr: raw.ghg + "kg" },
+            { name: "Land use", id: "Land", valueStr: raw.landUse + "m²" },
+            { name: "Water withdrawal", id: "Water", valueStr: raw.waterWithdrawal + "L" }
         ],
         links: [
             { source: 0, target: 1, value: 9 },
             { source: 0, target: 2, value: 1 },
-            { source: 2, target: 3, value: 4 }, // Käse -> CO2
-            { source: 2, target: 4, value: 3 }, // Käse -> Land
-            { source: 2, target: 5, value: 6 }  // Käse -> Water
+            { source: 2, target: 3, value: dist.ghg * 10 },
+            { source: 2, target: 4, value: dist.landUse * 10 },
+            { source: 2, target: 5, value: dist.waterWithdrawal * 10 }
         ]
     };
 
@@ -83,7 +104,12 @@ export async function sankey() {
             .attr("transform", d => `translate(${d.x0},${d.y0})`)
             .style("opacity", 0)
             .on("click", (event, d) => {
-                if (d.id === "Cheese") toggleData();
+                if (d.id === "Cheese") {
+                    showImpact = !showImpact;
+
+                    if (showImpact) update(dataImpact);
+                    else update(dataBase);
+                }
             });
 
         nodeEnter.append("rect")
@@ -115,14 +141,6 @@ export async function sankey() {
             .attr("y", d => (d.y1 - d.y0) / 2)
             .attr("x", d => d.x0 < width / 2 ? -6 : 6 + sankey.nodeWidth())
             .attr("text-anchor", d => d.x0 < width / 2 ? "end" : "start");
-    }
-
-
-    function toggleData() {
-        showImpact = !showImpact;
-
-        if (showImpact) update(dataImpact);
-        else update(dataBase);
     }
 
     update(dataBase);
