@@ -39,12 +39,12 @@ export async function scatter() {
     // create SVG
     const svg = d3.select("#scatterplot")
         .append("svg")
-        .attr("id", "scatterPlotSVG")
-        .attr("width", width + margins.left + margins.right)
-        .attr("height", height + margins.top + margins.bottom)
+            .attr("id", "scatterPlotSVG")
+            .attr("width", width + margins.left + margins.right)
+            .attr("height", height + margins.top + margins.bottom)
         .append("g")
-        .attr("id", "scatterPlotViewport")
-        .attr("transform", `translate(${margins.left}, ${margins.top})`);
+            .attr("id", "scatterPlotViewport")
+            .attr("transform", `translate(${margins.left}, ${margins.top})`);
 
     // prevents page scroll when zoom reaches max/min (from https://forum.babylonjs.com/t/how-to-avoid-scrolling-while-zooming/15609)
     svg.node().addEventListener("wheel", event => event.preventDefault())
@@ -52,12 +52,12 @@ export async function scatter() {
     // add clipping plane to diagram
     svg.append("defs")
         .append("SVG:clipPath")
-        .attr("id", "clip")
+            .attr("id", "clip")
         .append("SVG:rect")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("x", 0)
-        .attr("y", 0);
+            .attr("width", width)
+            .attr("height", height)
+            .attr("x", 0)
+            .attr("y", 0);
 
     // reset button
     const resetButton = d3.select("#scatterplot")
@@ -189,8 +189,8 @@ function createPlot(data, unit) {
     const filteredData = unit === "protein"
         ? data.filter(entry => {
             return entry[ghgEmissionsProtein] !== ""
-                && entry[landUseProtein] !== ""
-                && entry[freshwaterProtein] !== "";
+                && entry[landUseProtein]      !== ""
+                && entry[freshwaterProtein]   !== "";
         })
         : data;
 
@@ -244,8 +244,7 @@ function createPlot(data, unit) {
             .attr("font-size", function (entry) {
                 const size = entry[radiusData] * milli * scale;
                 return size > 3 ? size : 0;
-            })
-            ;
+            });
     }
 
     const zoom = d3.zoom()
