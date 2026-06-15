@@ -1,5 +1,5 @@
 
-export function loadVersorgungsbilanzen() {
+export function loadDatasetA() {
     return d3.csv("./data/barChart/data.csv")
         // Promise.all([
         //     d3.csv("./data/raw/Bier.csv"),
@@ -9,21 +9,21 @@ export function loadVersorgungsbilanzen() {
         //     d3.csv("./data/raw/Geflügel.csv")
         // ])
         .catch(function (err) {
-            console.error(`Something went wrong when trying to read data: ${err}`);
+            console.error(`Something went wrong when trying to load dataset A: ${err}`);
             return [];
         });
 }
 
-export function loadFoodFootprints() {
+export function loadDatasetB() {
     return d3.csv("./data/scatterPlot/data.csv")
         .catch(function (err) {
-            console.error(`Something went wrong when trying to read data: ${err}`);
+            console.error(`Something went wrong when trying to load dataset B: ${err}`);
             return [];
         });
 }
 
 export function placeholder(id, color) {
-    const svg = d3.select(`#${id}`)
+    d3.select(`#${id}`)
         .append("svg")
         .attr("width", 100)
         .attr("height", 100)
