@@ -8,23 +8,99 @@
         <script src="main.js" type="module"></script>
     </head>
     <body>
-        <h1>Hello :)</h1>
-        <img id="gadse" src="hellowww.gif" alt="waving cat" title="It is I, the polite waving cat." />
+        <div data-section="title">
+            <div class="bg">
+                <div class="overlay"></div>
+                <emoji-canvas emojis="🇦🇹 🍽️"></emoji-canvas>
+            </div>
 
-        <emoji-canvas emojis="🧀 🍽️ 🐮 💧"></emoji-canvas>
+            <div class="page flex down center">
+                <h1 class="c-bg text-shadow">The <span class="c-accent">Au</span>str<span class="c-accent">ian</span> Diet</h1>
 
-        <div class="plot" id="bar-chart"></div>
-        <div class="plot" id="sankey"></div>
-        <div class="plot" id="scatterplot"></div>
-        <div class="plot" id="network-graph"></div>
+                <a class="flex down center c-bg" style="font-size: 2rem" href="#intro">
+                    <span>Learn about ....</span>
+                    <span>&#65088;</span>
+                </a>
+            </div>
+
+            <div id="intro">
+                <p>
+                    Hier steht eine kurze einleitung: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur, dolor. Quibusdam
+                    fugiat nulla, odit, quos, soluta maxime sed quam delectus dignissimos accusantium doloremque dolorem? Dolorem velit
+                    totam corporis cumque assumenda.
+                </p>
+
+                <div style="text-align: center; font-size: 2rem">
+                    <a style="color: var(--fg)" href="#macro-balance"> &#65088;</a>
+                </div>
+            </div>
+        </div>
+
+        <div data-section="macro-balance" id="macro-balance" class="page">
+            <h2 class="text-shadow">The Macro balance</h2>
+            <p>worum geht's jetzt und was ist das diagram</p>
+            <div id="bar-chart"></div>
+        </div>
+
+        <div data-section="cheese-and-cost" id="cheese-and-cost">
+            <div class="bg">
+                <div class="overlay"></div>
+                <emoji-canvas emojis="🧀"></emoji-canvas>
+            </div>
+
+            <div class="page flex down">
+                <div class="split c-bg" style="gap: 1rem; align-items: center; padding: 4rem 2rem">
+                    <h2 class="c-bg">Cheese & Ecological Cost</h2>
+                    <div class="splitter"></div>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus molestiae vero, beatae laudantium corporis est
+                        adipisci libero nobis laboriosam esse, eaque deleniti. Repellendus, distinctio enim amet aut quas laborum ratione.
+                    </div>
+                </div>
+
+                <div class="surface" style="flex: 1" class="flex center">
+                    <div id="sankey"></div>
+                </div>
+            </div>
+        </div>
+
+        <div data-section="env-shift" id="env-shift" class="page flex down">
+            <h2 style="padding: 1rem" class="text-shadow">The Environmental Shift</h2>
+
+            <div class="surface" style="flex: 1">
+                <div id="scatterplot"></div>
+
+                <div>Was sehen sie hier?</div>
+            </div>
+        </div>
+
+        <div data-section="bio-sandbox" id="bio-sandbox">
+            <div class="bg">
+                <div class="overlay"></div>
+                <emoji-canvas emojis="🥦 🥩 🥖 🥛 🍰"></emoji-canvas>
+            </div>
+
+            <div class="page flex down center c-bg">
+                <h2 class="c-bg">The Biochemical Sandbox</h2>
+                <p style="font-size: 1.5rem" class="center">
+                    Erklärung des diagrams: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo corporis minus, minima dolores
+                    officiis consequuntur qui fuga, repudiandae saepe veritatis nesciunt nam perferendis quis. Veritatis a accusamus magni
+                    maiores nulla!
+                </p>
+            </div>
+
+            <div id="network-graph"></div>
+        </div>
+
+        <div class="page">Schlussfolgderung? und unsere namen?</div>
     </body>
     <script>
         // main(); // rufen wir in main.js selbst auf (das wird erst ausgeführt nachdem das dom geladen ist)
 
         // Das crazy.... ich sage auch immer gadse (und ferd 🐴)
-        document.getElementById("gadse").addEventListener("click", function () {
+        /* document.getElementById("gadse").addEventListener("click", function () {
             window.alert("meow");
             console.log("meowed");
-        });
+        }); */
     </script>
 </html>
