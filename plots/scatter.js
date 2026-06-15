@@ -7,7 +7,7 @@ const EM = 16;
 // margins will be used to push axis labels into the viewport
 const margins = {
     top: 10,
-    right: 300,
+    right: 60,
     bottom: 40,
     left: 60
 };
@@ -45,6 +45,9 @@ export async function scatter() {
         .append("g")
             .attr("id", "scatterPlotViewport")
             .attr("transform", `translate(${margins.left}, ${margins.top})`);
+
+    // prevents page scroll when zoom reaches max/min (from https://forum.babylonjs.com/t/how-to-avoid-scrolling-while-zooming/15609)
+    svg.node().addEventListener("wheel", event => event.preventDefault())
 
     // add clipping plane to diagram
     svg.append("defs")
@@ -89,7 +92,12 @@ export async function scatter() {
 
         views.on("change", function() {
             unit = d3.select('input[name="scatter"]:checked').node().value;
-            d3.select("#scatterPlotGraph").remove()
+            d3.select("#scatterPlotGraph")
+                .transition()
+                .duration(50)
+                .style("opacity", "0.0")
+                .remove();
+
             createPlot(data, unit);
         });
     });
@@ -121,10 +129,15 @@ function createPlot(data, unit) {
 
     const xAxis = viewport.append("g")
         .attr("transform", `translate(0, ${height})`) // translate x-axis to bottom
+        .style("opacity", "0.0")
         .call(d3.axisBottom(x)); // set on which side of the axis the labels should be
 
     const yAxis = viewport.append("g")
+        .style("opacity", "0.0")
         .call(d3.axisLeft(y));
+
+    xAxis.transition().duration(500).style("opacity", "1.0");
+    yAxis.transition().duration(500).style("opacity", "1.0");
 
     // add labels
     viewport.append("text")
@@ -134,7 +147,11 @@ function createPlot(data, unit) {
         .attr("y", -margins.left * 0.6)
         .attr("font-size", "1em")
         .attr("font-weight", "bold")
-        .text(`Greenhouse gas emissions, in C0₂ per ${ unit === "kilogram" ? "kg" : "100g of protein"}`);
+        .text(`Greenhouse gas emissions, in C0₂ per ${ unit === "kilogram" ? "kg" : "100g of protein"}`)
+        .style("opacity", "0.0")
+        .transition()
+        .duration(500)
+        .style("opacity", "1.0");
 
    viewport.append("text")
         .attr("text-anchor", "end")
@@ -142,28 +159,23 @@ function createPlot(data, unit) {
         .attr("y", height + margins.bottom - margins.top * 0.5)
         .attr("font-size", "1em")
         .attr("font-weight", "bold")
-        .text(`Land use, in m² per ${ unit === "kilogram" ? "kg" : "100g of protein"}`);
+        .text(`Land use, in m² per ${ unit === "kilogram" ? "kg" : "100g of protein"}`)
+       .style("opacity", "0.0")
+       .transition()
+       .duration(500)
+       .style("opacity", "1.0");
 
     viewport.append("text")
-        .attr("x", width + EM)
+        .attr("text-anchor", "end")
+        .attr("x", width)
         .attr("y", margins.top)
         .attr("font-size", "0.75em")
         .attr("font-weight", "bold")
-        .text("Bubble size");
-
-    viewport.append("text")
-        .attr("x", width + EM)
-        .attr("y", margins.top + 0.75 * EM)
-        .attr("font-size", "0.75em")
-        .attr("font-weight", "bold")
-        .text("=");
-
-    viewport.append("text")
-        .attr("x", width + EM)
-        .attr("y", margins.top + 1.5 * EM)
-        .attr("font-size", "0.75em")
-        .attr("font-weight", "bold")
-        .text(`Freshwater withdrawals in 1000l per ${unit === "kilogram" ? "kg" : "100g of protein"}`);
+        .text(`Bubble size = Freshwater withdrawals in 1000l per ${unit === "kilogram" ? "kg" : "100g of protein"}`)
+        .style("opacity", "0.0")
+        .transition()
+        .duration(500)
+        .style("opacity", "1.0");
 
     // create scatter plot points
     const scatter = viewport.append('g')
@@ -189,6 +201,9 @@ function createPlot(data, unit) {
         .attr("cx", function (entry) { return x(+entry[xAxisData]); })
         .attr("cy", function (entry) { return y(+entry[yAxisData]); })
         .style("fill", "var(--accent)")
+        .style("opacity", "0.0")
+        .transition()
+        .duration(500)
         .style("opacity", "0.8");
 
     node.append("text")
@@ -198,6 +213,9 @@ function createPlot(data, unit) {
         })
         .attr("x", function (entry) { return x(+entry[xAxisData]) + entry[radiusData] * milli; })
         .attr("y", function (entry) { return y(+entry[yAxisData]) + entry[radiusData] * milli * 0.3; })
+        .style("opacity", "0.0")
+        .transition()
+        .duration(500)
         .style("opacity", "0.8")
         .text(function (entry) { return entry["Entity"] });
 
@@ -208,8 +226,8 @@ function createPlot(data, unit) {
         const newY = transform.rescaleY(y);
         const scale = transform.k;
 
-        xAxis.call(d3.axisBottom(newX))
-        yAxis.call(d3.axisLeft(newY))
+        xAxis.call(d3.axisBottom(newX));
+        yAxis.call(d3.axisLeft(newY));
 
         scatter.selectAll("circle")
             .attr("r", function (entry) { return entry[radiusData] * milli * scale })
