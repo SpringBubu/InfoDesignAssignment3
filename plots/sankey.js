@@ -1,10 +1,10 @@
 import { placeholder } from "../utils/index.js";
 
-export async function sankey() {
+const margin = { top: 8, right: 250, bottom: 8, left: 200 },
+    width = 900 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-    const margin = { top: 8, right: 150, bottom: 8, left: 100 },
-        width = 900 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+export async function sankey() {
 
     const svg = d3.select("#sankey").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -23,7 +23,11 @@ export async function sankey() {
 
     let showImpact = false;
     const dataBase = {
-        nodes: [{ name: "10L Raw Milk", id: "Milk" }, { name: "9L Loss in Water", id: "Loss" }, { name: "1kg Cheese", id: "Cheese" }],
+        nodes: [
+            { name: "10L Raw Milk", id: "Milk" },
+            { name: "9L Loss in Water", id: "Loss" },
+            { name: "1kg Cheese", id: "Cheese" }
+        ],
         links: [
             { source: 0, target: 1, value: 9 },
             { source: 0, target: 2, value: 1 }
@@ -32,13 +36,13 @@ export async function sankey() {
 
     const dataImpact = {
         nodes: [
-            { name: "10L Rohmilch", id: "Milk", valueStr: "10 L" },
-            { name: "9L Molke/Wasserverlust", id: "Loss", valueStr: "9 L" },
-            { name: "1kg Käse", id: "Cheese", valueStr: "1 kg" },
+            { name: "Raw Milk", id: "Milk", valueStr: "10L" },
+            { name: "Loss in Water", id: "Loss", valueStr: "9L" },
+            { name: "Cheese", id: "Cheese", valueStr: "1kg" },
             // Ebene 2 mit echten Einheiten:
-            { name: "CO₂-Ausstoß", id: "CO2", valueStr: "8.5 kg CO₂-Äq." },
-            { name: "Flächenbedarf", id: "Land", valueStr: "25 m²" },
-            { name: "Wasserfußabdruck", id: "Water", valueStr: "5.000 L" }
+            { name: "CO₂ emissions", id: "CO2", valueStr: "8.5kg" },
+            { name: "land use", id: "Land", valueStr: "25m²" },
+            { name: "Water withdrawal", id: "Water", valueStr: "5.000L" }
         ],
         links: [
             { source: 0, target: 1, value: 9 },
@@ -91,12 +95,12 @@ export async function sankey() {
             .style("cursor", d => d.id == "Cheese" ? "pointer" : "normal");
 
         nodeEnter.append("text")
-            .attr("x", d => d.x0 < width / 2 ? 6 + sankey.nodeWidth() : -6)
+            .attr("x", d => d.x0 < width / 2 ? -6 : 6 + sankey.nodeWidth())
             .attr("y", d => (d.y1 - d.y0) / 2)
             .attr("dy", "0.35em")
-            .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
+            .attr("text-anchor", d => d.x0 < width / 2 ? "end" : "start")
             .style("z-index", "1")
-            .text(d => `${d.name} ${d?.valueStr}`);
+            .text(d => d.valueStr ? `${d.name} (${d.valueStr})` : d.name);
 
         const nodeMerge = node.merge(nodeEnter);
 
@@ -109,8 +113,8 @@ export async function sankey() {
 
         nodeMerge.select("text").transition().duration(800)
             .attr("y", d => (d.y1 - d.y0) / 2)
-            .attr("x", d => d.x0 < width / 2 ? 6 + sankey.nodeWidth() : -6)
-            .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end");
+            .attr("x", d => d.x0 < width / 2 ? -6 : 6 + sankey.nodeWidth())
+            .attr("text-anchor", d => d.x0 < width / 2 ? "end" : "start");
     }
 
 

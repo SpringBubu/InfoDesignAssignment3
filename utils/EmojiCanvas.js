@@ -17,7 +17,7 @@ export class EmojiCanvas extends HTMLElement {
     }
 
     scale() {
-        return this.getAttribute("scale") || 16;
+        return +this.getAttribute("scale") || 16;
     }
 
     bg() {
