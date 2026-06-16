@@ -114,6 +114,13 @@ div[data-section] {
 
 .c-accent {
     color: var(--accent);
+
+}
+
+#network-controls {
+    width: 250px;
+    height: 670px;
+    padding: 1rem;
 }
 
 #network-foods,

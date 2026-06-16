@@ -1,8 +1,8 @@
 import { loadDatasetA, loadDatasetC, placeholder } from "../utils/index.js";
 
-const margin = { top: 8, right: 16, bottom: 8, left: 16 };
-const width = 900 - margin.left - margin.right;
-const height = (650) - margin.top - margin.bottom;
+const margin = { top: 0, right: 0, bottom: 0, left: 250 };
+const width = window.innerWidth - margin.left - margin.right;
+const height = (670) - margin.top - margin.bottom;
 
 export async function network() {
 
@@ -64,6 +64,8 @@ export async function network() {
     data.nodes.push(...[...nutrients.values()].map((nid) => ({ id: nid, group: "nutrient", radius: 10 })));
     data.nodes.push(...[...biologies.values()].map((bid) => ({ id: bid, group: "biology", radius: 10 })));
 
+    data.nodes.sort((a, b) => a.id.localeCompare(b.id));
+
     for (const n of data.nodes) {
         n.x = xPositions[n.group];
         n.y = height / 2;
@@ -109,7 +111,7 @@ export async function network() {
         const nodes = nodeGroup.selectAll("g.net-node")
             .data(data.nodes, d => d.id)
             .join(enter => {
-                const g = enter.append("g").attr("class", "net-node");
+                const g = enter.append("g").attr("class", "net-node").call(drag(simulation));
 
                 g.append("circle")
                     .attr("cursor", "pointer")
@@ -224,4 +226,25 @@ export async function network() {
     }
 
     update(getFilteredData(fids, nids));
+}
+
+function drag(simulation) {
+    function start(event) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        event.subject.fx = event.subject.x;
+        event.subject.fy = event.subject.y;
+    }
+    function drag(event) {
+        event.subject.fx = event.x;
+        event.subject.fy = event.y;
+    }
+    function end(event) {
+        if (!event.active) simulation.alphaTarget(0);
+        event.subject.fx = null;
+        event.subject.fy = null;
+    }
+    return d3.drag()
+        .on("start", start)
+        .on("drag", drag)
+        .on("end", end);
 }

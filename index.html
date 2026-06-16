@@ -111,23 +111,32 @@
                 <emoji-canvas emojis="🥦 🥩 🥖 🥛 🍰"></emoji-canvas>
             </div>
 
-            <div class="page flex down center c-bg">
+            <div class="page flex down c-bg" style="align-items: center; justify-content: center">
                 <h2 class="c-bg">The Biochemical Sandbox</h2>
-                <p style="font-size: 1.5rem; width: 60%" class="center">
-                    Erklärung des diagrams: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo corporis minus, minima dolores
-                    officiis consequuntur qui fuga, repudiandae saepe veritatis nesciunt nam perferendis quis. Veritatis a accusamus magni
-                    maiores nulla!
-                </p>
+                <div style="font-size: 1.5rem; width: 60%">
+                    <p>
+                        Food is a complex, interconnected matrix of chemical compounds. This interactive sandbox below maps the direct
+                        pathways from whole foods to their underlying micronutrients and biological impacts. Go ahead - explore the network
+                        and let the connections surprise you!
+                    </p>
+                    <b>How to explore:</b>
+                    <ul>
+                        <li><b>Filter</b> by using the checkboxes below to isolate specific food groups or micronutrient families.</li>
+                        <li><b>Analyze</b> by hovering over any node to highlight its unique nutritional network.</li>
+                        <li><b>Interact</b> by dragging nodes to reshape the sandbox or scroll to zoom into complex clusters.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="flex" style="height: 650px">
-                <div style="height: 100%; padding: 1rem" class="flex down">
+            <div class="flex">
+                <div id="network-controls" class="flex down">
                     <h3>Foods</h3>
                     <div id="network-foods"></div>
 
                     <h3>Nutritions</h3>
                     <div id="network-nutritions"></div>
                 </div>
+
                 <div id="network-graph" style="box-shadow: 2px 2px 10px 1px #aaa inset"></div>
             </div>
 
