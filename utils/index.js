@@ -1,14 +1,13 @@
 
 export function loadDatasetA() {
-    return d3.csv("./data/barChart/data.csv")
-        // Promise.all([
-        //     d3.csv("./data/raw/Bier.csv"),
-        //     d3.csv("./data/raw/Eier.csv"),
-        //     d3.csv("./data/raw/Fische.csv"),
-        //     d3.csv("./data/raw/Fleisch.csv"),
-        //     d3.csv("./data/raw/Geflügel.csv")
-        // ])
-        .catch(function (err) {
+    const products = [
+        "Bier", "Eier", "Fische", "Fleisch", "Geflügel", "Gemüse", "Getreide",
+        "Honig", "Hülsenfrüchte", "Kartoffeln_und_Kartoffelstärke", "Milch", "Obst",
+        "Pflanzliche_Öle", "Reis", "Tierische_Fette", "Wein", "Zucker", "Ölsaaten"
+    ];
+    return Promise.all(
+            products.map(product => d3.csv(`./data/barChart/Versorgungsbilanzen_bereinigt/${product}.csv`))
+        ).catch(function (err) {
             console.error(`Something went wrong when trying to load dataset A: ${err}`);
             return [];
         });
