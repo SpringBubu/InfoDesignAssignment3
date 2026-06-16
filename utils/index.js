@@ -22,6 +22,17 @@ export function loadDatasetB() {
         });
 }
 
+export async function loadDatasetC() {
+    try {
+        const res = await fetch("./data/FoodData_Central_foundation_food_json_2026-04-30.json");
+        const dataJson = await res.json();
+        return dataJson["FoundationFoods"].filter(f => !!f);
+    } catch (err) {
+        console.error(`Something went wrong when trying to load dataset C: ${err}`);
+        return [];
+    }
+}
+
 export function placeholder(id, color) {
     d3.select(`#${id}`)
         .append("svg")

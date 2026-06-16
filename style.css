@@ -115,3 +115,20 @@ div[data-section] {
 .c-accent {
     color: var(--accent);
 }
+
+#network-foods,
+#network-nutritions {
+    height: 40%;
+    width: 200px;
+    overflow-y: auto;
+    background-color: #eee;
+
+    border-radius: 8px;
+}
+
+#network-foods>div,
+#network-nutritions>div {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
