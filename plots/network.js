@@ -222,6 +222,7 @@ export async function network() {
         });
 
         const filtered = { nodes: filteredNodes, links: filteredLinks };
+        console.log(filtered);
         return filtered;
     }
 
