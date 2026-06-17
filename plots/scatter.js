@@ -1,8 +1,5 @@
 import { loadDatasetB } from "../utils/index.js";
 
-// ################## Note: Why calc em to pixel? Can't use em directly in svg digram?
-const EM = 16;
-
 // diagram size stuff, the width/height refer to the diagram's size, not the SVG's
 // margins will be used to push axis labels into the viewport
 const margins = {
@@ -23,11 +20,6 @@ const landUseProtein = "Land use per 100g protein";
 const ghgEmissionsProtein = "Ghg emissions per 100g protein";
 const freshwaterProtein = "Freshwater withdrawals per 100g protein";
 
-// TODO:
-//  - [x] add interactivity
-//  - [x] adjust text to be actually readable
-//  - [x] adjust color scheme
-//  - [ ] adjust sizing
 // Inspired by
 // - https://d3-graph-gallery.com/graph/scatter_basic.html
 // - https://d3-graph-gallery.com/graph/interactivity_zoom.html
@@ -132,7 +124,6 @@ function createPlot(data, unit) {
     // create diagram axes based on biggest element in data set
     const xMax = d3.max(data, entry => +entry[xAxisData]) + 20; // +20 to prevent clipping
     const yMax = d3.max(data, entry => +entry[yAxisData]) + 20;
-    const rMax = d3.max(data, entry => +entry[radiusData]);
 
     // console.log(data); console.log(yMax); console.log(xMax); console.log(rMax);
 
