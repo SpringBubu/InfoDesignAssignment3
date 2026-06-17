@@ -37,7 +37,7 @@ const freshwaterProtein = "Freshwater withdrawals per 100g protein";
 export async function scatter() {
 
     // create SVG
-    const svg = d3.select("#scatterplot")
+    const svg = d3.select("#scatter-plot")
         .append("svg")
             .attr("id", "scatterPlotSVG")
             .attr("width", width + margins.left + margins.right)
@@ -45,6 +45,16 @@ export async function scatter() {
         .append("g")
             .attr("id", "scatterPlotViewport")
             .attr("transform", `translate(${margins.left}, ${margins.top})`);
+
+    // background for graph area
+    svg.append("rect")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("fill", "#eee")
+        .style("opacity", "0.0")
+        .transition()
+        .duration(500)
+        .style("opacity", "1.0");
 
     // prevents page scroll when zoom reaches max/min (from https://forum.babylonjs.com/t/how-to-avoid-scrolling-while-zooming/15609)
     svg.node().addEventListener("wheel", event => event.preventDefault())
@@ -59,15 +69,12 @@ export async function scatter() {
             .attr("x", 0)
             .attr("y", 0);
 
-    // reset button
-    const resetButton = d3.select("#scatterplot")
-        .insert("button", "svg")
-        .attr("id", "scatterPlotReset")
-        .text("Reset");
-
     // change view radio buttons
-    const views = d3.select("#scatterplot")
-        .insert("form", "svg");
+    const views = d3.select("#scatter-plot")
+        .append("fieldset");
+
+    views.append("legend")
+        .html("Controls");
 
     views.append("input")
         .attr("id", "radio-kg")
@@ -78,7 +85,8 @@ export async function scatter() {
 
     views.append("label")
         .html("per kilogram")
-        .attr("for", "radio-kg");
+        .attr("for", "radio-kg")
+        .append("br");
 
     views.append("input")
         .attr("id", "radio-protein")
@@ -89,6 +97,11 @@ export async function scatter() {
     views.append("label")
         .html("per 100g protein")
         .attr("for", "radio-protein");
+
+    // reset button
+    views.append("button")
+        .attr("id", "scatterPlotReset")
+        .text("Reset Zoom");
 
     loadDatasetB().then(data => {
         let unit = d3.select('input[name="scatter"]:checked').node().value;
@@ -170,12 +183,13 @@ function createPlot(data, unit) {
         .style("opacity", "1.0");
 
     viewport.append("text")
+        .attr("id", "bubbleText")
         .attr("text-anchor", "end")
-        .attr("x", width)
-        .attr("y", margins.top)
+        .attr("x", width - 5)
+        .attr("y", margins.top + 5)
         .attr("font-size", "0.75em")
         .attr("font-weight", "bold")
-        .text(`Bubble size = Freshwater withdrawals in 1000l per ${unit === "kilogram" ? "kg" : "100g of protein"}`)
+        .text(`Bubble radius = Freshwater withdrawals in 1000l per ${unit === "kilogram" ? "kg" : "100g of protein"}`)
         .style("opacity", "0.0")
         .transition()
         .duration(500)
@@ -245,6 +259,8 @@ function createPlot(data, unit) {
                 const size = entry[radiusData] * milli * scale;
                 return size > 3 ? size : 0;
             });
+
+        d3.select("#bubbleText").raise(); // to prevent bubbles being on top of the text
     }
 
     const zoom = d3.zoom()
