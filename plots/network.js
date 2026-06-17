@@ -49,6 +49,8 @@ export async function network() {
         const fid = collection.description.split(",")[0];
         foods.add(fid);
         for (const n of collection.foodNutrients) {
+            if (n.amount <= 0) continue;
+
             const nid = n.nutrient.name.split(",")[0];
             nutrients.add(nid);
 
@@ -119,7 +121,6 @@ export async function network() {
                     .attr("fill", d => color(d.group));
 
                 g.append("text")
-                    .attr("class", "node-text")
                     .attr("text-anchor", d => d.group == "food" ? "end" : "start")
                     .attr("x", d => d.group == "food" ? -12 : 12)
                     .attr("y", ".42em")
@@ -142,12 +143,31 @@ export async function network() {
         simulation.alpha(0.3).restart();
 
 
+        const infoDiv = d3.select("#network-info")
+
         nodes.on("mouseover", function (event, d) {
             nodes.style("opacity", o => isConnected(d, o) ? 1 : 0.1);
             links.style("opacity", o => (o.source === d || o.target === d) ? 1 : 0.1);
+
+            if (d.group == "food") {
+                const connections = data.links.filter(l => l.source.id == d.id);
+                infoDiv.append("h3").text(d.id);
+                const ul = infoDiv.append("ul");
+                for (const c of connections) {
+                    ul.append("li")
+                        .text(`${c.target.id}: ${c.amount}${c.unitName}`);
+
+                }
+                infoDiv.style("display", "block");
+                console.log(d);
+            }
+
         }).on("mouseout", function () {
             nodes.style("opacity", 1);
             links.style("opacity", 1);
+
+            infoDiv.style("display", "none");
+            infoDiv.html("");
         });
     }
 
