@@ -1,9 +1,9 @@
-"Values","PRODUCTION","Human consumption per capita (in kg)"
-"Total meat",860086,58.0
-"Beef and veal",199219,9.9
-"Pork",423629,32.6
-"Sheep and goat meat",7565,0.7
-"Horse meat",,
-"Offal",63445,0.4
-"Poultry meat",158411,13.8
-"Other meat",7818,0.7
+"Values","PRODUCTION","Human consumption per capita (in kg)","emoji"
+"Total meat",860086,58.0,-
+"Beef and veal",199219,9.9,🐄
+"Pork",423629,32.6,🐖
+"Sheep and goat meat",7565,0.7,🐑
+"Horse meat",,,🐎
+"Offal",63445,0.4,-
+"Poultry meat",158411,13.8,-
+"Other meat",7818,0.7,-

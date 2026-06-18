@@ -1,21 +1,21 @@
-"Values","PRODUCTION","Human consumption per capita (in kg)"
-"Apples",232906,15.3
-"Pears",76146,3.2
-"Apricots",8842,2.1
-"Cherries, sour cherries",15284,0.9
-"Peaches, nectarines",3343,3.3
-"Plums",27082,1.7
-"Strawberries",14335,3.8
-"Other berries",12579,4.0
-"Table grapes",,3.7
-"Bananas",,14.7
-"Pineapples",,2.3
-"Other fruits",,4.4
-"Oranges",,5.8
-"Tangerines, clementines",,3.9
-"Lemons",,4.0
-"Grapefruits",,0.5
-"Other citrus fruits",,2.8
-"Fruits in total",390517,76.4
-"Dried fruits",,1.8
-"Nuts",6377,4.5
+"Values","PRODUCTION","Human consumption per capita (in kg)","emoji"
+"Apples",232906,15.3,🍎
+"Pears",76146,3.2,🍐
+"Apricots",8842,2.1,-
+"Cherries, sour cherries",15284,0.9,🍒
+"Peaches, nectarines",3343,3.3,🍑
+"Plums",27082,1.7,-
+"Strawberries",14335,3.8,🍓
+"Other berries",12579,4.0,🫐
+"Table grapes",,3.7,🍇
+"Bananas",,14.7,🍌
+"Pineapples",,2.3,🍍
+"Other fruits",,4.4,-
+"Oranges",,5.8,🍊
+"Tangerines, clementines",,3.9,🍊
+"Lemons",,4.0,🍋
+"Grapefruits",,0.5,-
+"Other citrus fruits",,2.8,-
+"Fruits in total",390517,76.4,-
+"Dried fruits",,1.8,-
+"Nuts",6377,4.5,🥜
