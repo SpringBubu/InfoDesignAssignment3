@@ -4,9 +4,9 @@
 |    | Component           | About                   | Done                     |
 |----|---------------------|-------------------------|--------------------------|
 | 1. | Diverging Bar Chart | The Macro Balance       | <ul><li>- [ ] </li></ul> |
-| 2. | Sankey              | Cheese & Ecologial Cost | <ul><li>- [ ] </li></ul> |
-| 3. | Scatterplot         | The Environmental Shift | <ul><li>- [ ] </li></ul> |
-| 4. | Network Graph       | The Biochemical Sandbox | <ul><li>- [ ] </li></ul> |
+| 2. | Sankey              | Cheese & Ecologial Cost | <ul><li>- [x] </li></ul> |
+| 3. | Scatterplot         | The Environmental Shift | <ul><li>- [x] </li></ul> |
+| 4. | Network Graph       | The Biochemical Sandbox | <ul><li>- [x] </li></ul> |
 
 ### At least three different interaction techniques
 1. Diverging Bar Chart: Somehow interactive TBD
@@ -39,3 +39,10 @@ containing the raw data and a data.csv that contains a cleaned up, more usable v
   - NOTE: CSV states 2010 as year, but according to website the data is from 2018, so there might be an error.
 - Dataset C: High-Resolution Nutritional Biochemistry Profiles
   - URL: https://fdc.nal.usda.gov/download-datasets.html
+
+## TODO/ Touch ups once done:
+- update readme
+- add the years for the data (might be interesting)?
+- add sources at the bottom of the page?
+- Check criteria again
+- Do presentation

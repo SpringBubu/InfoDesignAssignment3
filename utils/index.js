@@ -6,7 +6,7 @@ export function loadDatasetA() {
         "Pflanzliche_Öle", "Reis", "Tierische_Fette", "Wein", "Zucker", "Ölsaaten"
     ];
     return Promise.all(
-            products.map(product => d3.csv(`./data/barChart/Versorgungsbilanzen_bereinigt/${product}.csv`))
+            products.map(product => d3.csv(`./data/dataSetA/${product}.csv`))
         ).catch(function (err) {
             console.error(`Something went wrong when trying to load dataset A: ${err}`);
             return [];
@@ -14,7 +14,7 @@ export function loadDatasetA() {
 }
 
 export function loadDatasetB() {
-    return d3.csv("./data/scatterPlot/data.csv")
+    return d3.csv("./data/dataSetB/data.csv")
         .catch(function (err) {
             console.error(`Something went wrong when trying to load dataset B: ${err}`);
             return [];
