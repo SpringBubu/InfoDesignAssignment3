@@ -4,10 +4,13 @@ of this website is to visualize the production, ecological footprints, and nutri
 food system.
 
 ## Instructions
-Go to this website *LINK* or click on the green "< > Code" button on the top right of the repo, and then the "Download ZIP" 
-button to download the repo locally. Unpack that ZIP and double-click on the index.html in the root folder to open the 
-website. Alternatively, open the folder as a project in your IDE or text editor of your choice and start the site from there.
-The website should be good to go, the only needed library (d3.js) should be loaded automatically as an external script. 
+To view this project go to this website *LINK*. Further instructions, like specific interactions, are explained by the
+textual description. 
+
+In case you want to run this project locally, click on the green "< > Code" button on the top right of the repo, and choose
+your preferred methode to clone the repo. Then open your IDE or text editor of your choice and do the necessary steps to properly 
+clone (of course this steps depends on your IDE/text editor). The website itself should be good to go out of the box, 
+the only needed library (d3.js and an add-on for it) should be loaded automatically as an external script. 
 
 ## Formal Requirements
 This project was made as a part of the TU Vienna course "Fundamentals of Visualization", 2026. Which is why we want to
