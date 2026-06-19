@@ -8,7 +8,6 @@ const margins = {
 }
 const width = 1000;
 const height = 1250;
-
 const labelPadding = 15;
 
 // This monstrosity rounds the input to two decimal digits while cutting of excess zeros.
@@ -28,7 +27,12 @@ function consumptionUnit(entry) {
     return !entry["Human consumption per capita (in l)"] ? " kg" : " l";
 }
 
-// sorting functions
+// stuff for sorting
+let isOrderedAlphabetical = false;
+let isOrderedProduction = true;
+let isOrderedConsumption = false;
+let isOrderedReverse = false;
+
 function alphabetical(a, b) {
     return a["Values"] > b["Values"] ? 1 : -1;
 }
@@ -58,8 +62,13 @@ function consumptionAscending(a, b) {
 //  - [x] do something about the goddamn product labels (probably put it between the bars, as kind of a third column)
 //  - [x] remove like half of the products, there's like 5 Austrians total that about skimmed milk powder
 //  - [x] improve verbal description
-//  - [~] add way to sort differently(???)
+//  - [x] add way to sort differently(???)
 // "bar" short for Dr. John Bar
+// inspired by:
+// - https://observablehq.com/@avis-n/d3-sortable-bar-chart
+// - https://observablehq.com/@d3/bar-chart-transitions/2
+// - https://codesandbox.io/p/sandbox/d3-bar-chart-updating-rkb7s
+// - https://stackoverflow.com/questions/61087443/d3-update-stacked-bar-graph-using-selection-join
 export async function bar() {
     // create SVG
     const svg = d3.select("#bar-chart")
@@ -114,113 +123,177 @@ export async function bar() {
         // add y axis to SVG
         const yAxis = chart.append("g")
             .call(d3.axisLeft(y))
+            .attr("class", "y-axis")
             .attr("transform", `translate(${width * 0.5})`);
 
-        // style y axis
-        yAxis.selectAll("path,line")
-            .remove();
-
+        // style y axis labels
         yAxis.selectAll("text")
             .style("text-anchor", "middle")
             .attr("transform", `translate(${labelPadding * 0.65})`)
 
         // add axes labels
         viewport.append("text")
+            .on("click", () => sortData("production"))
             .attr("font-weight", "bold")
-            .text("Total production in Austria, in metric tonnes")
+            .text("Total production in Austria, in metric tonnes \u21C5")
             .style("opacity", "0.0")
             .transition()
             .duration(1500)
             .style("opacity", "1.0");
 
         viewport.append("text")
+            .on("click", () => sortData("alphabetical"))
             .style("text-anchor", "middle")
             .attr("transform", `translate(${width * 0.5})`)
             .attr("font-weight", "bold")
-            .text("Product")
+            .text("Product \u21C5")
             .style("opacity", "0.0")
             .transition()
             .duration(1500)
             .style("opacity", "1.0");
 
         viewport.append("text")
+            .on("click", () => sortData("consumption"))
             .style("text-anchor", "end")
             .attr("transform", `translate(${width})`)
             .attr("font-weight", "bold")
-            .text("Per capita consumption, in kilograms or liters")
+            .text("Per capita consumption, in kilograms or liters \u21C5")
             .style("opacity", "0.0")
             .transition()
             .duration(1500)
             .style("opacity", "1.0");
 
         // fill left chart with data and labels
-        chart.selectAll("rect.left")
-            .data(data)
-            .enter()
-            .append("rect")
-                .attr("x", xLeft(0) - labelPadding * 5)
-                .attr("y", entry => y(entry["Values"]))
-                .attr("height", y.bandwidth())
-                .attr("fill", "var(--accent)")
-                .transition()
-                .duration(700)
-                .attr("width", entry => xLeft(0) - xLeft(entry["PRODUCTION"]))
-                .attr("x", entry => xLeft(entry["PRODUCTION"]) - labelPadding * 5);
+        const updateBarsLeft = function (data) {
+            chart.selectAll("rect.bar-left")
+                .data(data, entry => entry["Values"])
+                .join(
+                    enter => enter.append("rect")
+                        .attr("class", "bar-left")
+                        .attr("x", xLeft(0) - labelPadding * 5)
+                        .attr("y", entry => y(entry["Values"]))
+                        .attr("height", y.bandwidth())
+                        .attr("fill", "var(--accent)")
+                        .transition()
+                        .duration(700)
+                        .attr("width", entry => xLeft(0) - xLeft(entry["PRODUCTION"]))
+                        .attr("x", entry => xLeft(entry["PRODUCTION"]) - labelPadding * 5),
+                    update => update.transition()
+                        .duration(700)
+                        .attr("y", entry => y(entry["Values"]))
+                );
 
-        chart.selectAll("text.left")
-            .data(data)
-            .enter()
-            .append("text")
-                .style("font-size", "0.75em")
-                .style("text-anchor", "end")
-                .attr("x", xLeft(0) - labelPadding * 5)
-                .attr("y", entry => y(entry["Values"]))
-                .attr("transform", `translate(${-labelPadding}, ${y.bandwidth() * 0.6})`)
-                .text(entry => `${formatNumber(entry["PRODUCTION"])} t`)
-                .transition()
-                .duration(700)
-                .attr("x", entry => xLeft(entry["PRODUCTION"]) - labelPadding * 5);
+            chart.selectAll("text.label-left")
+                .data(data, entry => entry["Values"])
+                .join(
+                    enter => enter.append("text")
+                        .style("font-size", "0.75em")
+                        .style("text-anchor", "end")
+                        .attr("class", "label-left")
+                        .attr("x", xLeft(0) - labelPadding * 5)
+                        .attr("y", entry => y(entry["Values"]))
+                        .attr("transform", `translate(${-labelPadding}, ${y.bandwidth() * 0.6})`)
+                        .text(entry => `${formatNumber(entry["PRODUCTION"])} t`)
+                        .transition()
+                        .duration(700)
+                        .attr("x", entry => xLeft(entry["PRODUCTION"]) - labelPadding * 5),
+                    update => update.transition()
+                        .duration(700)
+                        .attr("y", entry => y(entry["Values"]))
+                );
+        }
 
         // fill right chart with data and labels
-        chart.selectAll("rect.right")
-            .data(data)
-            .enter()
-            .append("rect")
-                .attr("x", xRight(0) + labelPadding * 5)
-                .attr("y", entry => y(entry["Values"]))
-                .attr("height", y.bandwidth())
-                .attr("fill", "gold")
-                .attr("transform", `translate(${width * 0.5})`)
-                .transition()
-                .duration(700)
-                .attr("width", entry => xRight(getConsumption(entry)));
+        const updateBarsRight = function (data) {
+            chart.selectAll("rect.bar-right")
+                .data(data, entry => entry["Values"])
+                .join(
+                    enter => enter.append("rect")
+                        .attr("class", "bar-right")
+                        .attr("x", xRight(0) + labelPadding * 5)
+                        .attr("y", entry => y(entry["Values"]))
+                        .attr("height", y.bandwidth())
+                        .attr("fill", "gold")
+                        .attr("transform", `translate(${width * 0.5})`)
+                        .transition()
+                        .duration(700)
+                        .attr("width", entry => xRight(getConsumption(entry))),
+                    update => update.transition()
+                        .duration(700)
+                        .attr("y", entry => y(entry["Values"]))
+                );
 
-        chart.selectAll("text.right")
-            .data(data)
-            .enter()
-            .append("text")
-                .style("font-size", "0.75em")
-                .attr("transform", `translate(${width * 0.5 + labelPadding * 6}, ${y.bandwidth() * 0.6})`)
-                .attr("y", entry => y(entry["Values"]))
-                .text(entry => formatNumber(getConsumption(entry)) + consumptionUnit(entry))
-                .transition()
-                .duration(700)
-                .attr("x", entry => xRight(getConsumption(entry)));
+            chart.selectAll("text.label-right")
+                .data(data, entry => entry["Values"])
+                .join(
+                    enter => enter.append("text")
+                        .style("font-size", "0.75em")
+                        .attr("class", "label-right")
+                        .attr("transform", `translate(${width * 0.5 + labelPadding * 6}, ${y.bandwidth() * 0.6})`)
+                        .attr("y", entry => y(entry["Values"]))
+                        .text(entry => formatNumber(getConsumption(entry)) + consumptionUnit(entry))
+                        .transition()
+                        .duration(700)
+                        .attr("x", entry => xRight(getConsumption(entry))),
+                    update => update.transition()
+                        .duration(700)
+                        .attr("y", entry => y(entry["Values"]))
+                );
+        }
+
+        updateBarsLeft(data);
+        updateBarsRight(data);
 
         // interaction / sorting
         function updateChart(order) {
-            xRight.domain(data.sort(order).map(entry => getConsumption(entry)));
+            data.sort(order);
 
-            chart.selectAll("rect.right")
-                .data(data)
-                .order();
+            y.domain(data.map(entry => entry["Values"]));
+            yAxis.transition()
+                .duration(700)
+                .call(d3.axisLeft(y));
+
+            updateBarsLeft(data);
+            updateBarsRight(data);
 
             console.log(data);
         }
 
-        d3.select("#bar-chart")
-            .append("button")
-            .text("lol")
-            .on("click", () => updateChart((a, b) => a["Values"] < b["Values"] ? 1 : -1))
+        function sortData(order) {
+            switch(order) {
+                case "alphabetical":
+                    if (!isOrderedAlphabetical || isOrderedAlphabetical && isOrderedReverse) {
+                        updateChart(alphabetical);
+                        isOrderedAlphabetical = true;
+                        isOrderedProduction = isOrderedConsumption = isOrderedReverse = false;
+                    } else {
+                        updateChart(alphabeticalReversed);
+                        isOrderedReverse = true;
+                    }
+                    break;
+                case "production":
+                    if (!isOrderedProduction || isOrderedProduction && isOrderedReverse) {
+                        updateChart(productionDescending);
+                        isOrderedProduction = true;
+                        isOrderedAlphabetical = isOrderedConsumption = isOrderedReverse = false;
+                    } else {
+                        updateChart(productionAscending);
+                        isOrderedReverse = true;
+                    }
+                    break;
+                case "consumption":
+                    if (!isOrderedConsumption || isOrderedConsumption && isOrderedReverse) {
+                        updateChart(consumptionDescending);
+                        isOrderedConsumption = true;
+                        isOrderedAlphabetical = isOrderedProduction = isOrderedReverse = false;
+                    } else {
+                        updateChart(consumptionAscending);
+                        isOrderedReverse = true;
+                    }
+                    break;
+                default:
+                    console.error(`Invalid ordering: ${order}`);
+            }
+        }
     });
 }

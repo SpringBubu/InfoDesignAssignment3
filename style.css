@@ -117,6 +117,10 @@ div[data-section] {
 
 }
 
+#bar-chart .y-axis path, line {
+    display: none
+}
+
 #scatter-plot {
     text-align: left;
     display: flex;
