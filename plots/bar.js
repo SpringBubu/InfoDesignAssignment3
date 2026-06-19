@@ -28,12 +28,37 @@ function consumptionUnit(entry) {
     return !entry["Human consumption per capita (in l)"] ? " kg" : " l";
 }
 
+// sorting functions
+function alphabetical(a, b) {
+    return a["Values"] > b["Values"] ? 1 : -1;
+}
+
+function alphabeticalReversed(a, b) {
+    return a["Values"] < b["Values"] ? 1 : -1;
+}
+
+function productionDescending(a, b) {
+    return b["PRODUCTION"] - a["PRODUCTION"];
+}
+
+function productionAscending(a, b) {
+    return a["PRODUCTION"] - b["PRODUCTION"];
+}
+
+function consumptionDescending(a, b) {
+    return getConsumption(b) - getConsumption(a);
+}
+
+function consumptionAscending(a, b) {
+    return getConsumption(a) - getConsumption(b);
+}
+
 // TODO:
 //  - [ ] add emojis
 //  - [x] do something about the goddamn product labels (probably put it between the bars, as kind of a third column)
-//  - [ ] remove like half of the products, there's like 5 Austrians total that about skimmed milk powder
+//  - [x] remove like half of the products, there's like 5 Austrians total that about skimmed milk powder
 //  - [x] improve verbal description
-//  - [ ] add way to sort differently(???)
+//  - [~] add way to sort differently(???)
 // "bar" short for Dr. John Bar
 export async function bar() {
     // create SVG
@@ -58,7 +83,7 @@ export async function bar() {
             .flat()
             .filter(entry => entry["PRODUCTION"] !== "")
             .filter(entry => getConsumption(entry))
-            .sort((a, b) => b["PRODUCTION"] - a["PRODUCTION"]);
+            .sort((a, b) => productionDescending(a, b));
 
         console.log(data); console.log(nestedData);
 
@@ -181,5 +206,21 @@ export async function bar() {
                 .transition()
                 .duration(700)
                 .attr("x", entry => xRight(getConsumption(entry)));
+
+        // interaction / sorting
+        function updateChart(order) {
+            xRight.domain(data.sort(order).map(entry => getConsumption(entry)));
+
+            chart.selectAll("rect.right")
+                .data(data)
+                .order();
+
+            console.log(data);
+        }
+
+        d3.select("#bar-chart")
+            .append("button")
+            .text("lol")
+            .on("click", () => updateChart((a, b) => a["Values"] < b["Values"] ? 1 : -1))
     });
 }
