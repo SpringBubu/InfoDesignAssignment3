@@ -117,7 +117,8 @@ div[data-section] {
 
 }
 
-#bar-chart .y-axis path, line {
+#bar-chart .y-axis path,
+#bar-chart .y-axis line {
     display: none
 }
 

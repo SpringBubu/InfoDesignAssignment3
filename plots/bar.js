@@ -58,11 +58,7 @@ function consumptionAscending(a, b) {
 }
 
 // TODO:
-//  - [ ] add emojis
-//  - [x] do something about the goddamn product labels (probably put it between the bars, as kind of a third column)
-//  - [x] remove like half of the products, there's like 5 Austrians total that about skimmed milk powder
-//  - [x] improve verbal description
-//  - [x] add way to sort differently(???)
+//  - [ ] add emojis (?)
 // "bar" short for Dr. John Bar
 // inspired by:
 // - https://observablehq.com/@avis-n/d3-sortable-bar-chart
@@ -78,8 +74,8 @@ export async function bar() {
             .attr("height", height + margins.top + margins.bottom)
 
     const viewport = svg.append("g")
-            .attr("id", "barChartViewport")
-            .attr("transform", `translate(${margins.left}, ${margins.top})`);
+        .attr("id", "barChartViewport")
+        .attr("transform", `translate(${margins.left}, ${margins.top})`);
 
     loadDatasetA().then(nestedData => {
 
@@ -94,7 +90,7 @@ export async function bar() {
             .filter(entry => getConsumption(entry))
             .sort((a, b) => productionDescending(a, b));
 
-        console.log(data); console.log(nestedData);
+        // console.log(data); console.log(nestedData);
 
         // Add axes
         const xRight = d3.scaleLinear()
@@ -260,7 +256,7 @@ export async function bar() {
         }
 
         function sortData(order) {
-            switch(order) {
+            switch (order) {
                 case "alphabetical":
                     if (!isOrderedAlphabetical || isOrderedAlphabetical && isOrderedReverse) {
                         updateChart(alphabetical);
