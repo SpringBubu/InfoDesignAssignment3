@@ -2,7 +2,7 @@
 export function loadDatasetA() {
     const products = [
         "Bier", "Eier", "Fische", "Fleisch", "Geflügel", "Gemüse", "Getreide",
-        "Honig", "Hülsenfrüchte", "Kartoffeln_und_Kartoffelstärke", "Milch", "Obst",
+        "Honig", "Kartoffeln_und_Kartoffelstärke", "Milch", "Obst",
         "Pflanzliche_Öle", "Reis", "Tierische_Fette", "Wein", "Zucker", "Ölsaaten"
     ];
     return Promise.all(

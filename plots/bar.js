@@ -7,7 +7,7 @@ const margins = {
     bottom: 10
 }
 const width = 1000;
-const height = 2500;
+const height = 1250;
 
 const labelPadding = 15;
 
@@ -60,7 +60,7 @@ export async function bar() {
             .filter(entry => getConsumption(entry))
             .sort((a, b) => b["PRODUCTION"] - a["PRODUCTION"]);
 
-        // console.log(data); console.log(nestedData);
+        console.log(data); console.log(nestedData);
 
         // Add axes
         const xRight = d3.scaleLinear()
@@ -146,10 +146,11 @@ export async function bar() {
             .data(data)
             .enter()
             .append("text")
-                .attr("x", xLeft(0) - labelPadding * 5)
+                .style("font-size", "0.75em")
                 .style("text-anchor", "end")
+                .attr("x", xLeft(0) - labelPadding * 5)
                 .attr("y", entry => y(entry["Values"]))
-                .attr("transform", `translate(${-labelPadding}, ${y.bandwidth() * 0.65})`)
+                .attr("transform", `translate(${-labelPadding}, ${y.bandwidth() * 0.6})`)
                 .text(entry => `${formatNumber(entry["PRODUCTION"])} t`)
                 .transition()
                 .duration(700)
@@ -173,7 +174,8 @@ export async function bar() {
             .data(data)
             .enter()
             .append("text")
-                .attr("transform", `translate(${width * 0.5 + labelPadding * 6}, ${y.bandwidth() * 0.65})`)
+                .style("font-size", "0.75em")
+                .attr("transform", `translate(${width * 0.5 + labelPadding * 6}, ${y.bandwidth() * 0.6})`)
                 .attr("y", entry => y(entry["Values"]))
                 .text(entry => formatNumber(getConsumption(entry)) + consumptionUnit(entry))
                 .transition()
