@@ -57,8 +57,6 @@ function consumptionAscending(a, b) {
     return getConsumption(a) - getConsumption(b);
 }
 
-// TODO:
-//  - [ ] add emojis (?)
 // "bar" short for Dr. John Bar
 // inspired by:
 // - https://observablehq.com/@avis-n/d3-sortable-bar-chart

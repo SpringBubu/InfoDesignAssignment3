@@ -53,9 +53,3 @@ The only exception is the use of dashboarding or non-programming software like T
   - NOTE: CSV states 2010 as year, but according to website the data is from 2018, so there might be an error.
 - Dataset C: High-Resolution Nutritional Biochemistry Profiles
   - URL: https://fdc.nal.usda.gov/download-datasets.html
-
-## TODO/ Touch ups once done:
-- add the years for the data (might be interesting)?
-- add sources at the bottom of the page?
-- Check criteria again
-- Do presentation
