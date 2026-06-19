@@ -9,9 +9,9 @@ const margins = {
 const width = 1000;
 const height = 2500;
 
-const labelPadding = 10;
+const labelPadding = 15;
 
-// This monstrosity cuts of rounds the input to two decimal digits while cutting of excess zeros.
+// This monstrosity rounds the input to two decimal digits while cutting of excess zeros.
 // Additionally, it formats larger numbers to have point separators.
 function formatNumber(num) {
     return new Intl.NumberFormat("de-DE", { style: "decimal" }).format(+parseFloat(num).toFixed(2));
@@ -30,9 +30,9 @@ function consumptionUnit(entry) {
 
 // TODO:
 //  - [ ] add emojis
-//  - [ ] do something about the goddamn product labels (probably put it between the bars, as kind of a third column)
+//  - [x] do something about the goddamn product labels (probably put it between the bars, as kind of a third column)
 //  - [ ] remove like half of the products, there's like 5 Austrians total that about skimmed milk powder
-//  - [ ] improve verbal description
+//  - [x] improve verbal description
 //  - [ ] add way to sort differently(???)
 // "bar" short for Dr. John Bar
 export async function bar() {
@@ -49,6 +49,10 @@ export async function bar() {
 
     loadDatasetA().then(nestedData => {
 
+        // Add chart area in svg
+        const chart = viewport.append("g")
+            .attr("transform", `translate(0, ${margins.top})`);
+
         // flatten, filter/remove elements with missing data & sort data
         const data = nestedData
             .flat()
@@ -58,35 +62,57 @@ export async function bar() {
 
         // console.log(data); console.log(nestedData);
 
+        // Add axes
         const xRight = d3.scaleLinear()
             .domain([0, Math.ceil(d3.max(data, entry => getConsumption(entry)))])
-            .range([0, width * 0.5]);
+            .range([0, width * 0.5 - labelPadding * 1.5]);
 
         const xLeft = d3.scaleLinear()
             .domain([Math.ceil(d3.max(data, entry => +entry["PRODUCTION"])), 0])
-            .range([0, width * 0.5]);
+            .range([labelPadding * 1.5, width * 0.5]);
 
         const y = d3.scaleBand()
             .domain(data.map(entry => entry["Values"]))
             .range([0, height])
             .padding(0.1);
 
-        /* TODO: not sure if we actually want no axes at all like our design document seems to suggest
-        const xAxisLeft = svg.append("g")
-            .call(d3.axisTop(xLeft));
+        /*
+        const xAxisLeft = chart.append("g")
+            .call(d3.axisTop(xLeft))
+            .attr("transform", `translate(${-labelPadding * 5})`);
 
-        const xAxisRight = svg.append("g")
+        const xAxisRight = chart.append("g")
             .call(d3.axisTop(xRight))
-            .attr("transform", `translate(${width * 0.5})`);
-
+            .attr("transform", `translate(${width * 0.5 + labelPadding * 5})`);
         */
-        const yAxis = viewport.append("g")
+
+        // add y axis to SVG
+        const yAxis = chart.append("g")
             .call(d3.axisLeft(y))
             .attr("transform", `translate(${width * 0.5})`);
 
+        // style y axis
+        yAxis.selectAll("path,line")
+            .remove();
+
+        yAxis.selectAll("text")
+            .style("text-anchor", "middle")
+            .attr("transform", `translate(${labelPadding * 0.65})`)
+
+        // add axes labels
         viewport.append("text")
             .attr("font-weight", "bold")
             .text("Total production in Austria, in metric tonnes")
+            .style("opacity", "0.0")
+            .transition()
+            .duration(1500)
+            .style("opacity", "1.0");
+
+        viewport.append("text")
+            .style("text-anchor", "middle")
+            .attr("transform", `translate(${width * 0.5})`)
+            .attr("font-weight", "bold")
+            .text("Product")
             .style("opacity", "0.0")
             .transition()
             .duration(1500)
@@ -102,40 +128,39 @@ export async function bar() {
             .duration(1500)
             .style("opacity", "1.0");
 
-        const chart = viewport.append("g")
-            .attr("transform", `translate(0, ${margins.top})`);
-
+        // fill left chart with data and labels
         chart.selectAll("rect.left")
             .data(data)
             .enter()
             .append("rect")
-                .attr("x", xLeft(0))
+                .attr("x", xLeft(0) - labelPadding * 5)
                 .attr("y", entry => y(entry["Values"]))
                 .attr("height", y.bandwidth())
                 .attr("fill", "var(--accent)")
                 .transition()
                 .duration(700)
                 .attr("width", entry => xLeft(0) - xLeft(entry["PRODUCTION"]))
-                .attr("x", entry => xLeft(entry["PRODUCTION"]));
+                .attr("x", entry => xLeft(entry["PRODUCTION"]) - labelPadding * 5);
 
         chart.selectAll("text.left")
             .data(data)
             .enter()
             .append("text")
-                .attr("x", xLeft(0))
+                .attr("x", xLeft(0) - labelPadding * 5)
                 .style("text-anchor", "end")
                 .attr("y", entry => y(entry["Values"]))
                 .attr("transform", `translate(${-labelPadding}, ${y.bandwidth() * 0.65})`)
                 .text(entry => `${formatNumber(entry["PRODUCTION"])} t`)
                 .transition()
                 .duration(700)
-                .attr("x", entry => xLeft(entry["PRODUCTION"]));
+                .attr("x", entry => xLeft(entry["PRODUCTION"]) - labelPadding * 5);
 
+        // fill right chart with data and labels
         chart.selectAll("rect.right")
             .data(data)
             .enter()
             .append("rect")
-                .attr("x", xRight(0))
+                .attr("x", xRight(0) + labelPadding * 5)
                 .attr("y", entry => y(entry["Values"]))
                 .attr("height", y.bandwidth())
                 .attr("fill", "gold")
@@ -148,13 +173,11 @@ export async function bar() {
             .data(data)
             .enter()
             .append("text")
-                .attr("transform", `translate(${width * 0.5 + labelPadding}, ${y.bandwidth() * 0.65})`)
+                .attr("transform", `translate(${width * 0.5 + labelPadding * 6}, ${y.bandwidth() * 0.65})`)
                 .attr("y", entry => y(entry["Values"]))
                 .text(entry => formatNumber(getConsumption(entry)) + consumptionUnit(entry))
                 .transition()
                 .duration(700)
                 .attr("x", entry => xRight(getConsumption(entry)));
-
-        yAxis.raise(); // TODO: remove, temporary
     });
 }
