@@ -4,7 +4,7 @@ of this website is to visualize the production, ecological footprints, and nutri
 food system.
 
 ## Instructions
-To view this project go to this website go to 'https://springbubu.github.io/InfoDesignAssignment3/' or click [here](https://springbubu.github.io/InfoDesignAssignment3/). Further instructions, like specific interactions, are explained by the
+To view this project go to this website 'https://springbubu.github.io/InfoDesignAssignment3/' or click [here](https://springbubu.github.io/InfoDesignAssignment3/). Further instructions, like specific interactions, are explained by the
 textual description. 
 
 In case you want to run this project locally, click on the green "< > Code" button on the top right of the repo, and choose
@@ -41,11 +41,11 @@ n equals the number of team members, meaning in our case n = 3.
 5. The Nutritional Sandbox: The Big Graph (Network Graph)
 6. Conclusion & Credits
 
-## Notes
+### Notes
 No restrictions on programming tools or libraries, but encouraged to use D3.js. 
 The only exception is the use of dashboarding or non-programming software like Tableau or Power BI.
 
-### Data Sets
+## Data Sets
 - Dataset A: Austrian Macro-Consumption: 
   - URL: https://www.statistik.at/statistiken/land-und-forstwirtschaft/landwirtschaftliche-bilanzen/versorgungsbilanzen
 - Dataset B: Environmental Life Cycle Assessments
