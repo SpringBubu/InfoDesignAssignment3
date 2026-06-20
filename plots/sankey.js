@@ -24,12 +24,16 @@ export async function sankey() {
     const setB = await loadDatasetB();
     console.log(setB);
 
-    const product = "Cheese";
-    const entry = setB.find(e => e["Entity"] == product);
+    const productA = "Cheese";
+    const entryA = setB.find(e => e["Entity"] == productA);
+    const productB = "Milk";
+    const entryB = setB.find(e => e["Entity"] == productB);
     const raw = {
-        waterWithdrawal: entry["Freshwater withdrawals per kilogram"],
-        ghg: entry["Ghg emissions per kilogram"],
-        landUse: entry["Land use per kilogram"],
+        waterWithdrawal: entryA["Freshwater withdrawals per kilogram"],
+        ghg: entryA["Ghg emissions per kilogram"],
+        landUse: entryA["Land use per kilogram"],
+
+        waterWithdrawalB: entryB["Freshwater withdrawals per kilogram"],
     };
     const dist = {
         waterWithdrawal: raw.waterWithdrawal / 10,
@@ -42,11 +46,12 @@ export async function sankey() {
     dist.landUse /= sum;
     console.log(dist);
 
+    const loss = Math.round(raw.waterWithdrawal / raw.waterWithdrawalB);
     let showImpact = false;
     const dataBase = {
         nodes: [
-            { name: "10L Raw Milk", id: "Milk" },
-            { name: "9L Loss in Water", id: "Loss" },
+            { name: (loss + 1) + "L " + productB, id: "Milk" },
+            { name: "~" + loss + "L Loss in Water", id: "Loss" },
             { name: "1kg Cheese", id: "Cheese" }
         ],
         links: [
