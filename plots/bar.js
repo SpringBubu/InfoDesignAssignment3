@@ -3,7 +3,7 @@ import { loadDatasetA } from "../utils/index.js";
 const margins = {
     top: 20,
     left: 150,
-    right: 150,
+    right: 240,
     bottom: 10
 }
 const width = 1000;
@@ -199,6 +199,8 @@ export async function bar() {
 
         // fill right chart with data and labels
         const updateBarsRight = function (data) {
+            const shouldPlaceLabelInside = entry => xRight(getConsumption(entry)) > width * 0.5 - labelPadding * 7;
+
             chart.selectAll("rect.bar-right")
                 .data(data, entry => entry["Values"])
                 .join(
@@ -222,13 +224,15 @@ export async function bar() {
                 .join(
                     enter => enter.append("text")
                         .style("font-size", "0.75em")
+                        .style("text-anchor", entry => shouldPlaceLabelInside(entry) ? "end" : "start")
+                        .style("fill", entry => shouldPlaceLabelInside(entry) ? "#191713" : "var(--ink)")
                         .attr("class", "label-right")
                         .attr("transform", `translate(${width * 0.5 + labelPadding * 6}, ${y.bandwidth() * 0.6})`)
                         .attr("y", entry => y(entry["Values"]))
                         .text(entry => formatNumber(getConsumption(entry)) + consumptionUnit(entry))
                         .transition()
                         .duration(700)
-                        .attr("x", entry => xRight(getConsumption(entry))),
+                        .attr("x", entry => xRight(getConsumption(entry)) - (shouldPlaceLabelInside(entry) ? 25 : 0)),
                     update => update.transition()
                         .duration(700)
                         .attr("y", entry => y(entry["Values"]))

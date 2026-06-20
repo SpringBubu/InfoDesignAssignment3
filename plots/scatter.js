@@ -42,7 +42,7 @@ export async function scatter() {
     svg.append("rect")
         .attr("width", width)
         .attr("height", height)
-        .attr("fill", "#eee")
+        .attr("fill", "var(--surface)")
         .style("opacity", "0.0")
         .transition()
         .duration(500)
@@ -216,12 +216,18 @@ function createPlot(data, unit) {
         .style("opacity", "0.8");
 
     node.append("text")
+        .attr("class", "bubble-label")
         .attr("font-size", function (entry) {
-            const size = entry[radiusData] * milli;
-            return size > 3 ? size : 0;
+            return entry[radiusData] * milli > 3 ? 11 : 0;
         })
-        .attr("x", function (entry) { return x(+entry[xAxisData]) + entry[radiusData] * milli; })
-        .attr("y", function (entry) { return y(+entry[yAxisData]) + entry[radiusData] * milli * 0.3; })
+        .attr("text-anchor", function (entry) {
+            return entry[radiusData] * milli > 24 ? "middle" : "start";
+        })
+        .attr("x", function (entry) {
+            const radius = entry[radiusData] * milli;
+            return x(+entry[xAxisData]) + (radius > 24 ? 0 : Math.max(radius + 5, 8));
+        })
+        .attr("y", function (entry) { return y(+entry[yAxisData]) + 4; })
         .style("opacity", "0.0")
         .transition()
         .duration(500)
@@ -244,11 +250,17 @@ function createPlot(data, unit) {
             .attr("cy", function (entry) { return newY(+entry[yAxisData]); });
 
         scatter.selectAll("text")
-            .attr("x", function (entry) { return newX(+entry[xAxisData]) + entry[radiusData] * milli * scale; })
-            .attr("y", function (entry) { return newY(+entry[yAxisData]) + entry[radiusData] * milli * 0.3 * scale; })
+            .attr("text-anchor", function (entry) {
+                return entry[radiusData] * milli * scale > 24 ? "middle" : "start";
+            })
+            .attr("x", function (entry) {
+                const radius = entry[radiusData] * milli * scale;
+                return newX(+entry[xAxisData]) + (radius > 24 ? 0 : Math.max(radius + 5, 8));
+            })
+            .attr("y", function (entry) { return newY(+entry[yAxisData]) + 4; })
             .attr("font-size", function (entry) {
-                const size = entry[radiusData] * milli * scale;
-                return size > 3 ? size : 0;
+                const radius = entry[radiusData] * milli * scale;
+                return radius > 3 ? Math.min(14, 11 + Math.log2(Math.max(1, scale))) : 0;
             });
 
         d3.select("#bubbleText").raise(); // to prevent bubbles being on top of the text

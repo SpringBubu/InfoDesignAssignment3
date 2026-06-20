@@ -80,7 +80,7 @@ export async function sankey() {
         const link = svg.selectAll(".link")
             .data(graph.links, d => `${d.source.id}-${d.target.id}`);
 
-        link.exit().transition().duration(500).style("opacity", 0).remove();
+        link.exit().interrupt().transition().duration(180).style("opacity", 0).remove();
 
         const linkEnter = link.enter().append("path")
             .attr("class", "link")
@@ -89,28 +89,23 @@ export async function sankey() {
             .style("stroke-width", d => Math.max(1, d.width))
             .style("opacity", 0);
 
-        link.merge(linkEnter).transition().duration(800)
+        link.merge(linkEnter)
+            .interrupt()
             .attr("d", d3.sankeyLinkHorizontal())
             .style("stroke-width", d => Math.max(1, d.width))
-            .style("opacity", 0.4);
+            .transition()
+            .duration(260)
+            .style("opacity", 0.5);
 
         const node = svg.selectAll(".node")
             .data(graph.nodes, d => d.id);
 
-        node.exit().transition().duration(500).style("opacity", 0).remove();
+        node.exit().interrupt().transition().duration(180).style("opacity", 0).remove();
 
         const nodeEnter = node.enter().append("g")
             .attr("class", "node")
             .attr("transform", d => `translate(${d.x0},${d.y0})`)
-            .style("opacity", 0)
-            .on("click", (event, d) => {
-                if (d.id === "Cheese") {
-                    showImpact = !showImpact;
-
-                    if (showImpact) update(dataImpact);
-                    else update(dataBase);
-                }
-            });
+            .style("opacity", 0);
 
         nodeEnter.append("rect")
             .attr("x", 0)
@@ -130,14 +125,35 @@ export async function sankey() {
 
         const nodeMerge = node.merge(nodeEnter);
 
-        nodeMerge.transition().duration(800)
-            .attr("transform", d => `translate(${d.x0},${d.y0})`)
-            .style("opacity", 1);
+        function toggleImpact() {
+            showImpact = !showImpact;
+            update(showImpact ? dataImpact : dataBase);
+        }
 
-        nodeMerge.select("rect").transition().duration(800)
+        // Apply node and link geometry in the same frame. Animating their paths
+        // independently can temporarily detach large impact flows from Cheese.
+        nodeMerge
+            .interrupt()
+            .attr("transform", d => `translate(${d.x0},${d.y0})`)
+            .style("opacity", 1)
+            .attr("role", d => d.id === "Cheese" ? "button" : null)
+            .attr("tabindex", d => d.id === "Cheese" ? 0 : null)
+            .attr("aria-label", d => d.id === "Cheese" ? "Toggle the ecological impact flows of cheese" : null)
+            .on("click", (event, d) => {
+                if (d.id === "Cheese") toggleImpact();
+            })
+            .on("keydown", (event, d) => {
+                if (d.id !== "Cheese" || (event.key !== "Enter" && event.key !== " ")) return;
+                event.preventDefault();
+                toggleImpact();
+            });
+
+        nodeMerge.select("rect")
+            .interrupt()
             .attr("height", d => d.y1 - d.y0);
 
-        nodeMerge.select("text").transition().duration(800)
+        nodeMerge.select("text")
+            .interrupt()
             .attr("y", d => (d.y1 - d.y0) / 2)
             .attr("x", d => d.x0 < width / 2 ? -6 : 6 + sankey.nodeWidth())
             .attr("text-anchor", d => d.x0 < width / 2 ? "end" : "start");

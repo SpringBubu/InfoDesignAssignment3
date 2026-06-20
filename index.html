@@ -2,222 +2,330 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>InfoDesign Assigment 3</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="An interactive visual story about production, ecological footprints, and nutritional biochemistry in Austria's food system."
+        />
+        <meta name="theme-color" content="#191713" />
+        <title>The Austrian Diet — An interactive food-system atlas</title>
+        <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Outfit:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="style.css" />
 
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
-
         <script src="main.js" type="module"></script>
     </head>
     <body>
-        <div data-section="title">
-            <div class="bg">
-                <div class="overlay"></div>
-                <emoji-canvas emojis="🇦🇹 🍽️"></emoji-canvas>
-            </div>
+        <a class="skip-link" href="#main-content">Skip to the story</a>
+        <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
-            <div class="page flex down center">
-                <h1 class="c-bg text-shadow">The <span class="c-accent">Au</span>str<span class="c-accent">ian</span> Diet</h1>
-
-                <div class="c-bg" style="font-size: 2rem; width: 70%">
-                    <p>
-                        What we eat every day leaves a significant footprint on our planet. This visual journey breaks down the Austrian
-                        food matrix: from our country's macroscopic production volumes to the hidden ecological costs of seemingly simple
-                        foods like cheese, all the way to the complex biochemical networks embedded in our food. Explore the invisible
-                        connections between consumption, nature, and biology.
-                    </p>
-
-                    <a class="flex down center c-bg" href="#macro-balance">
-                        <span>Learn more</span>
-                        <span>&#65088;</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div data-section="macro-balance" id="macro-balance" class="page">
-            <h2 style="margin: 2rem 2rem 0rem">The Macro balance</h2>
-
-            <div class="surface flex down center" style="flex: 1">
-                <div style="width: 50%; margin: auto">
-                    <p>
-                        Austria is a country known for its wines and beer, as well as for other cuisines such as beef soup, apple strudel, and, of course, schnitzel.
-                        These are just a few among many great dishes Austrians enjoy on a day-to-day basis. However, this is only true from the perspective of the consumer,
-                        because when viewed under the lens of Austria's industry, the picture changes quite drastically.
-                    </p>
-                    <p>
-                        So, let's start of by comparing Austria's annual food production with the average consumption of an Austrian.
-                    </p>
-                    <p>
-                        This chart is interactive, click on the arrow symbols or their labels to change a metric's ordering!
-                    </p>
-
-                    <div class="flex down center" id="bar-chart"></div>
-
-                    <a class="flex down center" style="margin: 4rem 0px; color: var(--fg)" href="#cheese-and-cost">
-                        <span>Next</span>
-                        <span>&#65088;</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div data-section="cheese-and-cost" id="cheese-and-cost">
-            <div class="bg">
-                <div class="overlay"></div>
-                <emoji-canvas emojis="🧀"></emoji-canvas>
-            </div>
-
-            <div class="page flex down">
-                <div class="split c-bg" style="gap: 1rem; align-items: center; padding: 4rem 2rem">
-                    <h2 class="c-bg">Cheese & Ecological Cost</h2>
-                    <div class="splitter"></div>
-                    <div style="font-size: 1.2rem">
-                        <p>
-                            Creating dairy products requires a staggering amount of resources. To produce just <b>1 kg of hard cheese</b>,
-                            Austrian dairies process roughly <b>10 liters of raw milk</b>, leaving behind 9 liters of liquid whey and water
-                            loss.
-                        </p>
-                        <p>
-                            While this physical mass balance looks straightforward, the true environmental toll remains hidden beneath the
-                            surface.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="surface flex down center" style="flex: 1">
-                    <div style="width: 50%; padding: 1rem">
-                        Click on "Cheese" to reveal the massive secondary flows of the ecological footprint: from greenhouse gas emissions
-                        to land use and virtual water withdrawal
-                    </div>
-
-                    <div id="sankey"></div>
-
-                    <a class="flex down center" style="margin: 4rem 0px; color: var(--fg)" href="#env-shift">
-                        <span>Next</span>
-                        <span>&#65088;</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div data-section="env-shift" id="env-shift" class="page flex down">
-            <div class="bg">
-                <div class="overlay"></div>
-                <emoji-canvas emojis="🌱 🚲"></emoji-canvas>
-            </div>
-
-            <h2 style="padding: 2rem" class="c-bg">The Environmental Shift</h2>
-
-            <div class="surface flex down center" style="flex: 1">
-                <div style="width: 50%; padding: 1rem; margin: auto">
-                    <p>
-                        Different foods require different means of productions; our food originates from many diverse
-                        environments, with each product needing its own unique procedure before it can end up on our plate.
-                        The following visualization shows a plethora of food products and their impact on the environment.
-                    </p>
-                    <p>
-                        One glance at the scatter plot, and you will quickly notice that some products have a small, far less
-                        noticeable freshwater withdrawal foodprint than, for example, cheese. This is why we have given you the option
-                        to interact with and explore this data yourself!
-                    </p>
-                    <p style="text-align: left; margin-bottom: 0">
-                        <b>These are the controls:</b>
-                    </p>
-                    <ul style="text-align: left; margin-top: 3px">
-                        <li><b>Left click</b> inside the scatter plot and <b>move your mouse</b> to pan the view port.</li>
-                        <li><b>Scroll</b> to zoom: Make sure to really get in there, some products are quite hidden!</li>
-                        <li><b>Reset</b> to the default view by using the red button in the control panel on the right.</li>
-                        <li><b>Change</b> the scales by using the corresponding buttons on the right. Compare how this changes the perspective!</li>
-                    </ul>
-                </div>
-
-                <div id="scatter-plot"></div>
-
-                <a class="flex down center" style="margin: 4rem 0px; color: var(--fg)" href="#bio-sandbox">
-                    <span>Next</span>
-                    <span>&#65088;</span>
-                </a>
-            </div>
-        </div>
-
-        <div data-section="bio-sandbox" id="bio-sandbox">
-            <div class="bg">
-                <div class="overlay"></div>
-                <emoji-canvas emojis="🥦 🥩 🥖 🥛 🍰"></emoji-canvas>
-            </div>
-
-            <div class="page flex down c-bg" style="align-items: center; justify-content: center">
-                <h2 class="c-bg">The Biochemical Sandbox</h2>
-                <div style="font-size: 1.5rem; width: 60%">
-                    <p>
-                        Food is a complex, interconnected matrix of chemical compounds. This interactive sandbox below maps the direct
-                        pathways from whole foods to their underlying micronutrients and biological impacts. Go ahead - explore the network
-                        and let the connections surprise you!
-                    </p>
-                    <b>How to explore:</b>
-                    <ul>
-                        <li><b>Filter</b> by using the checkboxes below to isolate specific food groups or micronutrient families.</li>
-                        <li><b>Analyze</b> by hovering over any node to highlight its unique nutritional network.</li>
-                        <li><b>Interact</b> by dragging nodes to reshape the sandbox or scroll to zoom into complex clusters.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="flex">
-                <div id="network-controls" class="flex down">
-                    <h3>Foods</h3>
-                    <div id="network-foods"></div>
-
-                    <h3>Nutritions</h3>
-                    <div id="network-nutritions"></div>
-                </div>
-
-                <div id="network-graph" style="box-shadow: 2px 2px 10px 1px #aaa inset">
-                    <div id="network-info" style="display: none"></div>
-                </div>
-            </div>
-
-            <a class="flex down center" style="margin: 4rem 0px; color: var(--fg)" href="#conclusio">
-                <span>Conclusion</span>
-                <span>&#65088;</span>
+        <header class="site-header">
+            <a class="wordmark" href="#introduction" aria-label="The Austrian Diet, back to introduction">
+                <span class="wordmark-mark" aria-hidden="true">AD</span>
+                <span>The Austrian Diet</span>
             </a>
-        </div>
 
-        <div data-section="conclusio" id="conclusio" class="page flex center down">
-            <div style="flex: 1; font-size: 1.25rem; width: 60%; margin-top: 10%" class="center">
-                Our data exploration reveals that food is fundamentally interconnected, serving as a bridge between global resources and
-                biochemistry. A simple choice like buying cheese carries a heavy ecological burden, hiding a complex footprint of land use
-                and emissions beneath the surface. To make sustainable choices, we must understand the profound link between a food's
-                nutritional value and its environmental cost. Every choice matters, for our bodies, and our planet.
+            <nav class="chapter-nav" aria-label="Story chapters">
+                <a href="#macro-balance">Balance</a>
+                <a href="#cheese-and-cost">Cheese</a>
+                <a href="#env-shift">Footprint</a>
+                <a href="#bio-sandbox">Nutrition</a>
+                <a href="#conclusion">Synthesis</a>
+            </nav>
 
-                <p style="text-align: left; margin-top: 10%; margin-bottom: 0">
-                    <b>The datasets that were used are from the following sources:</b>
-                </p>
-                <ul style="text-align: left">
-                    <li>
-                        Statistik Austria (2024/25): <a href="https://www.statistik.at/statistiken/land-und-forstwirtschaft/landwirtschaftliche-bilanzen/versorgungsbilanzen">https://www.statistik.at/statistiken/land-und-forstwirtschaft/landwirtschaftliche-bilanzen/versorgungsbilanzen</a>
-                    </li>
-                    <li>
-                        Our World in Data (2018): <a href="https://ourworldindata.org/environmental-impacts-of-food">https://ourworldindata.org/environmental-impacts-of-food</a>
-                    </li>
-                    <li>
-                        U.S. Department of Agriculture (2026): <a href="https://fdc.nal.usda.gov/download-datasets.html">https://fdc.nal.usda.gov/download-datasets.html</a>
-                    </li>
-                </ul>
-            </div>
+            <button class="theme-toggle" type="button" aria-pressed="false">
+                <span class="theme-toggle-dot" aria-hidden="true"></span>
+                <span class="theme-toggle-label">Night view</span>
+            </button>
+        </header>
 
-            <div style="width: 100%; height: 300px; position: relative">
-                <emoji-canvas style="position: absolute; left: 0; top: 0; z-index: -1" emojis="👨‍🎓 🧑‍💻  " height="300"></emoji-canvas>
-                <div class="overlay" style="z-index: -1"></div>
-                <div class="flex center c-bg" style="justify-content: space-evenly; height: 100%; font-size: 1.5rem">
-                    <span style="list-style: circle; font-weight: bold; font-size: 2rem">Created by:</span>
-                    <span style="list-style: circle">Michael Hagmann</span>
-                    <span style="list-style: circle">Julian Kusternigg</span>
-                    <span style="list-style: circle">Benedikt Serlath</span>
+        <main id="main-content">
+            <section data-section="title" id="introduction" class="hero">
+                <div class="hero-grid" aria-hidden="true"></div>
+                <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+                <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+
+                <div class="hero-meta reveal">
+                    <span>Interactive data story</span>
+                    <span>Austria · 2026</span>
                 </div>
-            </div>
-        </div>
+
+                <div class="hero-copy reveal">
+                    <p class="eyebrow">From field to fork to cell</p>
+                    <h1>The Austrian <em>Diet</em></h1>
+                    <p class="hero-deck">
+                        What Austria produces, what its citizens eat, and what every choice asks of land,
+                        water, climate, and the human body.
+                    </p>
+                </div>
+
+                <div class="hero-foot reveal">
+                    <p>
+                        A visual investigation using national supply balances, environmental life-cycle
+                        assessments, and high-resolution nutrient profiles.
+                    </p>
+                    <a class="story-link story-link-light" href="#macro-balance">
+                        Begin the investigation <span aria-hidden="true">↓</span>
+                    </a>
+                </div>
+            </section>
+
+            <section data-section="macro-balance" id="macro-balance" class="chapter">
+                <header class="chapter-heading reveal">
+                    <div class="chapter-index" aria-hidden="true">01</div>
+                    <div>
+                        <p class="eyebrow">The national ledger</p>
+                        <h2>Production is not the same as the plate.</h2>
+                    </div>
+                    <p class="chapter-intro">
+                        Austria is known for wine, beer, beef soup, apple strudel, and schnitzel. But the
+                        country seen through agricultural production looks very different from the country
+                        seen through individual consumption.
+                    </p>
+                </header>
+
+                <div class="evidence-note reveal">
+                    <span class="evidence-note-label">Read the split</span>
+                    <p>
+                        The left side records annual domestic production. The right shows average yearly
+                        consumption per person. Compare magnitude, then reorder the categories.
+                    </p>
+                </div>
+
+                <figure class="visualization-frame reveal">
+                    <figcaption>
+                        <div>
+                            <span class="figure-number">Figure 01</span>
+                            <strong>Austria's macro balance</strong>
+                        </div>
+                        <p>Choose any column heading to sort; choose it again to reverse the order.</p>
+                    </figcaption>
+                    <div class="chart-scroll" tabindex="0" aria-label="Scrollable diverging bar chart">
+                        <div id="bar-chart" aria-label="Production and per-capita consumption diverging bar chart"></div>
+                    </div>
+                </figure>
+
+                <a class="chapter-next" href="#cheese-and-cost">
+                    <span>Next chapter</span>
+                    <strong>Why cheese carries a hidden price</strong>
+                    <span aria-hidden="true">02 →</span>
+                </a>
+            </section>
+
+            <section data-section="cheese-and-cost" id="cheese-and-cost" class="chapter chapter-tinted">
+                <header class="chapter-heading reveal">
+                    <div class="chapter-index" aria-hidden="true">02</div>
+                    <div>
+                        <p class="eyebrow">The concentration problem</p>
+                        <h2>One kilogram of cheese begins with ten litres of milk.</h2>
+                    </div>
+                    <p class="chapter-intro">
+                        The physical mass balance is only the visible part. Concentrating milk also
+                        concentrates environmental consequences: greenhouse gases, land occupation, and
+                        freshwater withdrawal.
+                    </p>
+                </header>
+
+                <div class="story-split reveal">
+                    <div class="ratio-display" aria-label="Ten litres of raw milk become one kilogram of hard cheese">
+                        <span class="ratio-large">10 L</span>
+                        <span class="ratio-rule"></span>
+                        <span>raw milk</span>
+                        <span class="ratio-arrow" aria-hidden="true">→</span>
+                        <span class="ratio-large">1 kg</span>
+                        <span class="ratio-rule"></span>
+                        <span>hard cheese</span>
+                    </div>
+                    <div class="interaction-callout">
+                        <span class="interaction-key">Interaction 02</span>
+                        <h3>Reveal what the kilogram hides.</h3>
+                        <p>
+                            Select the <strong>Cheese</strong> node to disclose the secondary ecological
+                            flows. Select it again to return to the physical mass balance.
+                        </p>
+                    </div>
+                </div>
+
+                <figure class="visualization-frame reveal">
+                    <figcaption>
+                        <div>
+                            <span class="figure-number">Figure 02</span>
+                            <strong>Cheese mass and impact flows</strong>
+                        </div>
+                        <p>Flow width represents relative magnitude within each stage.</p>
+                    </figcaption>
+                    <div class="chart-stage chart-stage-compact">
+                        <div id="sankey" aria-label="Interactive Sankey diagram showing cheese production and ecological impacts"></div>
+                    </div>
+                </figure>
+
+                <a class="chapter-next" href="#env-shift">
+                    <span>Next chapter</span>
+                    <strong>Compare foods on equal terms</strong>
+                    <span aria-hidden="true">03 →</span>
+                </a>
+            </section>
+
+            <section data-section="env-shift" id="env-shift" class="chapter">
+                <header class="chapter-heading reveal">
+                    <div class="chapter-index" aria-hidden="true">03</div>
+                    <div>
+                        <p class="eyebrow">The environmental lens</p>
+                        <h2>The ranking changes when nutrition enters the equation.</h2>
+                    </div>
+                    <p class="chapter-intro">
+                        Land use, emissions, and freshwater withdrawal tell different stories. Compare foods
+                        per kilogram, then normalize them by protein to see which apparent efficiencies hold.
+                    </p>
+                </header>
+
+                <div class="control-legend reveal" aria-label="Scatter plot interaction guide">
+                    <div><span>Drag</span><p>Pan across the field</p></div>
+                    <div><span>Scroll</span><p>Zoom into dense clusters</p></div>
+                    <div><span>Toggle</span><p>Change the comparison unit</p></div>
+                    <div><span>Reset</span><p>Return to the overview</p></div>
+                </div>
+
+                <figure class="visualization-frame reveal">
+                    <figcaption>
+                        <div>
+                            <span class="figure-number">Figure 03</span>
+                            <strong>A multidimensional food footprint</strong>
+                        </div>
+                        <p>Land on x, greenhouse gases on y, freshwater withdrawal in bubble size.</p>
+                    </figcaption>
+                    <div class="chart-stage">
+                        <div id="scatter-plot" aria-label="Interactive environmental impact scatter plot"></div>
+                    </div>
+                </figure>
+
+                <a class="chapter-next" href="#bio-sandbox">
+                    <span>Next chapter</span>
+                    <strong>Move from footprint to biochemistry</strong>
+                    <span aria-hidden="true">04 →</span>
+                </a>
+            </section>
+
+            <section data-section="bio-sandbox" id="bio-sandbox" class="chapter chapter-network">
+                <header class="chapter-heading reveal">
+                    <div class="chapter-index" aria-hidden="true">04</div>
+                    <div>
+                        <p class="eyebrow">The nutritional matrix</p>
+                        <h2>A sustainable substitution still has to nourish a body.</h2>
+                    </div>
+                    <p class="chapter-intro">
+                        Food is an interconnected matrix of compounds. Filter whole foods and nutrients,
+                        trace their links, and test how a dietary shift changes the biochemical picture.
+                    </p>
+                </header>
+
+                <div class="network-layout reveal">
+                    <aside id="network-controls" class="network-controls" aria-label="Network filters">
+                        <div class="network-controls-heading">
+                            <span class="interaction-key">Interaction 04</span>
+                            <h3>Build a comparison</h3>
+                            <p>Select foods and nutrients to redraw the network.</p>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Foods</h4>
+                            <label class="filter-search" for="network-food-search">
+                                <span class="sr-only">Search foods</span>
+                                <input
+                                    id="network-food-search"
+                                    type="search"
+                                    placeholder="Search foods…"
+                                    autocomplete="off"
+                                    data-filter-target="#network-foods"
+                                />
+                            </label>
+                            <div id="network-foods"></div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Nutrients</h4>
+                            <label class="filter-search" for="network-nutrient-search">
+                                <span class="sr-only">Search nutrients</span>
+                                <input
+                                    id="network-nutrient-search"
+                                    type="search"
+                                    placeholder="Search nutrients…"
+                                    autocomplete="off"
+                                    data-filter-target="#network-nutritions"
+                                />
+                            </label>
+                            <div id="network-nutritions"></div>
+                        </div>
+                    </aside>
+
+                    <figure class="network-figure">
+                        <figcaption>
+                            <div>
+                                <span class="figure-number">Figure 04</span>
+                                <strong>The biochemical sandbox</strong>
+                            </div>
+                            <p>Drag nodes, zoom the field, and hover to isolate a food's connections.</p>
+                        </figcaption>
+                        <div id="network-graph" aria-label="Interactive food and nutrient network graph">
+                            <div id="network-info" style="display: none"></div>
+                        </div>
+                    </figure>
+                </div>
+
+                <a class="chapter-next" href="#conclusion">
+                    <span>Final chapter</span>
+                    <strong>Bring the three scales together</strong>
+                    <span aria-hidden="true">05 →</span>
+                </a>
+            </section>
+
+            <section data-section="conclusion" id="conclusion" class="conclusion">
+                <div class="conclusion-grid" aria-hidden="true"></div>
+                <div class="conclusion-copy reveal">
+                    <p class="eyebrow">Synthesis</p>
+                    <h2>There is no single number for a better diet.</h2>
+                    <p>
+                        A food choice connects national production, environmental cost, and nutritional
+                        function. Cheese makes that connection visible: a familiar product can carry a
+                        concentrated burden, while any substitute must still meet the body's needs.
+                    </p>
+                    <p class="conclusion-statement">
+                        The informed choice is not simply “less” or “more.” It is a choice made with the
+                        whole system in view.
+                    </p>
+                </div>
+
+                <div class="source-ledger reveal">
+                    <div>
+                        <span>Dataset A</span>
+                        <a href="https://www.statistik.at/statistiken/land-und-forstwirtschaft/landwirtschaftliche-bilanzen/versorgungsbilanzen">Statistik Austria · Supply balances</a>
+                    </div>
+                    <div>
+                        <span>Dataset B</span>
+                        <a href="https://ourworldindata.org/environmental-impacts-of-food">Our World in Data · Environmental impacts of food</a>
+                    </div>
+                    <div>
+                        <span>Dataset C</span>
+                        <a href="https://fdc.nal.usda.gov/download-datasets.html">USDA FoodData Central · Foundation foods</a>
+                    </div>
+                </div>
+
+                <footer class="project-footer reveal">
+                    <div>
+                        <span class="footer-label">Fundamentals of Visualization · TU Wien · Group 07</span>
+                        <strong>Michael Hagmann · Julian Kusternigg · Benedikt Serlath</strong>
+                    </div>
+                    <a href="#introduction">Return to the beginning ↑</a>
+                </footer>
+            </section>
+        </main>
     </body>
 </html>
