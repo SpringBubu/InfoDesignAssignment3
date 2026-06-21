@@ -5,7 +5,7 @@ food system.
 
 ## Instructions
 To view this project go to this website 'https://springbubu.github.io/InfoDesignAssignment3/' or click [here](https://springbubu.github.io/InfoDesignAssignment3/). Further instructions, like specific interactions, are explained by the
-textual description. 
+textual description on the site itself. 
 
 In case you want to run this project locally, click on the green "< > Code" button on the top right of the repo, and choose
 your preferred methode to clone the repo. Then open your IDE or text editor of your choice and do the necessary steps to properly 
