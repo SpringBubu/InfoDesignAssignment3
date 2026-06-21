@@ -20,6 +20,11 @@ const landUseProtein = "Land use per 100g protein";
 const ghgEmissionsProtein = "Ghg emissions per 100g protein";
 const freshwaterProtein = "Freshwater withdrawals per 100g protein";
 
+// makes entity names selector friendly by removing white spaces, non-letters and non-digits
+function formatString(entry) {
+    return entry.replace(/\s/g, "").replace(/[^a-zA-Z0-9\s]/g);
+}
+
 // Inspired by
 // - https://d3-graph-gallery.com/graph/scatter_basic.html
 // - https://d3-graph-gallery.com/graph/interactivity_zoom.html
@@ -206,27 +211,68 @@ function createPlot(data, unit) {
     const milli = 0.001;
 
     node.append("circle")
-        .attr("r", function (entry) { return entry[radiusData] * milli })
+        .attr("r", function (entry) { return entry[radiusData] * milli; })
         .attr("cx", function (entry) { return x(+entry[xAxisData]); })
         .attr("cy", function (entry) { return y(+entry[yAxisData]); })
         .style("fill", "var(--accent)")
+        .style("pointer-events", "all")
+        .text(function(entry) { return entry[radiusData]; })
+        .on("mouseover", function(event, entry) {
+            d3.select(`#withdrawals${formatString(entry["Entity"])}`)
+                .transition()
+                .duration(250)
+                .style("opacity", "1.0");
+
+            d3.select(this)
+                .transition()
+                .duration(100)
+                .style("fill", "rgb(250, 100, 100")
+        })
+        .on("mouseout", function(event, entry) {
+            d3.select(`#withdrawals${formatString(entry["Entity"])}`)
+                .transition()
+                .duration(250)
+                .style("opacity", "0.0");
+
+            d3.select(this)
+                .transition()
+                .duration(100)
+                .style("fill", "var(--accent)")
+        })
         .style("opacity", "0.0")
         .transition()
         .duration(500)
-        .style("opacity", "0.8");
+        .style("opacity", "0.8")
 
     node.append("text")
+        .attr("class", "scatterLabel")
         .attr("font-size", function (entry) {
             const size = entry[radiusData] * milli;
             return size > 3 ? size : 0;
         })
         .attr("x", function (entry) { return x(+entry[xAxisData]) + entry[radiusData] * milli; })
         .attr("y", function (entry) { return y(+entry[yAxisData]) + entry[radiusData] * milli * 0.3; })
+        .style("pointer-events", "none")
         .style("opacity", "0.0")
         .transition()
         .duration(500)
         .style("opacity", "0.8")
         .text(function (entry) { return entry["Entity"] });
+
+    node.append("text")
+        .attr("class", "bubbleLabel")
+        .attr("id", function(entry) {
+            return `withdrawals${formatString(entry["Entity"])}`; })
+        .attr("font-size", function (entry) {
+            const size = entry[radiusData] * milli;
+            return size > 3 ? size : 0;
+        })
+        .attr("x", function (entry) { return x(+entry[xAxisData]); })
+        .attr("y", function (entry) { return y(+entry[yAxisData]) - entry[radiusData] * 1.2 * milli; })
+        .style("text-anchor", "middle")
+        .style("pointer-events", "none")
+        .style("opacity", "0.0")
+        .text(function (entry) { return `${+parseFloat(entry[radiusData]).toFixed(2)} l/${unit === "kilogram" ? "kg" : "100g protein"}` });
 
     // Zooming and panning stuff:
 
@@ -243,9 +289,17 @@ function createPlot(data, unit) {
             .attr("cx", function (entry) { return newX(+entry[xAxisData]); })
             .attr("cy", function (entry) { return newY(+entry[yAxisData]); });
 
-        scatter.selectAll("text")
+        scatter.selectAll("text.scatterLabel")
             .attr("x", function (entry) { return newX(+entry[xAxisData]) + entry[radiusData] * milli * scale; })
             .attr("y", function (entry) { return newY(+entry[yAxisData]) + entry[radiusData] * milli * 0.3 * scale; })
+            .attr("font-size", function (entry) {
+                const size = entry[radiusData] * milli * scale;
+                return size > 3 ? size : 0;
+            });
+
+        scatter.selectAll("text.bubbleLabel")
+            .attr("x", function (entry) { return newX(+entry[xAxisData]); })
+            .attr("y", function (entry) { return newY(+entry[yAxisData]) - entry[radiusData] * 1.2  * milli * scale; })
             .attr("font-size", function (entry) {
                 const size = entry[radiusData] * milli * scale;
                 return size > 3 ? size : 0;
@@ -260,17 +314,19 @@ function createPlot(data, unit) {
         .on("zoom", updateViewport);
 
     // invisible rectangle over graph that reacts to mouse events
-    const zoomArea = viewport.append("rect")
+    viewport.append("rect")
         .attr("id", "scatterPlotZoomArea")
         .attr("width", width)
         .attr("height", height)
         .style("fill", "none")
         .style("pointer-events", "all")
-        .call(zoom);
+        .lower();
+
+    viewport.call(zoom);
 
     // add functionality to reset button
     d3.select("#scatterPlotReset").on("click", function () {
-        zoomArea.transition()
+        viewport.transition()
             .duration(500)
             .call(zoom.transform, d3.zoomIdentity);
     });

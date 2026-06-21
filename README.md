@@ -30,7 +30,7 @@ n equals the number of team members, meaning in our case n = 3.
 3. Zooming (Scatter Plot and Network Graph)
 4. Panning (Scatter Plot and Network Graph)
 5. Node Manipulation (Network Graph)
-6. Details when hovering over element (Network Graph)
+6. Details when hovering over element (Scatter Plot, Network Graph)
 7. Filtering (Network Graph)
 
 ### At least 2n narrative views or story components
